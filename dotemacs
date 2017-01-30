@@ -1,0 +1,136 @@
+(defun plist-to-alist (the-plist)
+  (defun get-tuple-from-plist (the-plist)
+    (when the-plist
+      (cons (car the-plist) (cadr the-plist))))
+
+  (let ((alist '()))
+    (while the-plist
+      (add-to-list 'alist (get-tuple-from-plist the-plist))
+      (setq the-plist (cddr the-plist)))
+  alist))
+
+;; (load "/Users/aaronvirshup/.emacs.d/molpro.el")
+(setq text-mode-hook 'turn-on-auto-fill)
+(define-key global-map  [delete] 'delete-char)
+(delete-selection-mode 1)
+
+
+(set-frame-height (selected-frame) 60)
+(set-frame-width (selected-frame) 80)
+(setq inhibit-splash-screen t)
+(setq mouse-drag-copy-region t)
+
+(global-set-key "\M-g" 'goto-line) 
+
+(add-hook 'python-mode-hook
+      (lambda ()
+        (setq indent-tabs-mode f)
+        (setq tab-width 4)
+        (setq python-indent 4)))
+
+
+;; Multicolor text in source code settings
+(cond ((fboundp 'global-font-lock-mode)
+        ;; Load the font-lock package.
+        (require 'font-lock)
+        ;; Maximum colors
+        (setq font-lock-maximum-decoration t)
+        ;; Turn on font-lock in all modes that support it
+        (global-font-lock-mode t)))
+
+   (load-file "~/.emacs.d/pdb-mode.el")
+   (load-file "~/.emacs.d/color-theme.el")
+   (load-file "~/.emacs.d/graphviz-dot-mode.el")
+
+(setq auto-mode-alist
+      '(("\\.l\\([;.][0-9]*\\)?$" . lisp-mode)
+        ("\\.lsp\\([;.][0-9]*\\)?$" . lisp-mode)
+	("\\.el\\([;.][0-9]*\\)?$" . lisp-mode)
+	("\\.emacs\\([;.][0-9]*\\)?$" . lisp-mode)
+	("\\.dot\\([;.][0-9]*\\)?$" . graphviz-dot-mode)
+        ("\\.c\\([;.][0-9]*\\)?$" . c-mode)
+        ("\\.cc\\([;.][0-9]*\\)?$" . c++-mode)
+        ("\\.C\\([;.][0-9]*\\)?$" . c++-mode)
+        ("\\.xml\\([;.][0-9]*\\)?$" . xml-mode)
+        ("\\.sh\\([;.][0-9]*\\)?$" . sh-mode)
+	("\\.bash\.*$" . sh-mode)
+        ("\\.json\\([;.][0-9]*\\)?$" . javascript-mode)
+        ("\\.js\\([;.][0-9]*\\)?$" . javascript-mode)       
+        ("\\.htm\\([;.][0-9]*\\)?$" . html-mode)
+        ("\\.html\\([;.][0-9]*\\)?$" . html-mode)
+        ("\\.h\\([;.][0-9]*\\)?$" . fortran-mode)
+        ("\\.f\\([;.][0-9]*\\)?$" . fortran-mode)
+        ("\\.cocof\\([;.][0-9]*\\)?$" . fortran-mode)
+        ("\\.f90\\([;.][0-9]*\\)?$" . f90-mode)
+        ("\\.F\\([;.][0-9]*\\)?$" . fortran-mode)
+        ("\\.py\\([;.][0-9]*\\)?$" . python-mode)
+        ("\\.cmn\\([;.][0-9]*\\)?$" . fortran-mode)
+        ("\\.par\\([;.][0-9]*\\)?$" . fortran-mode)
+        ("\\.int\\([;.][0-9]*\\)?$" . fortran-mode)
+        ("\\.i\\([;.][0-9]*\\)?$" . fortran-mode)
+        ("\\.txt\\([;.][0-9]*\\)?$" . text-mode)
+        ("\\.coco\\([;.][0-9]*\\)?$" . fortran-mode)
+        ("\\.perl\\([;.][0-9]*\\)?$" . perl-mode)
+        ("\\.pl\\([;.][0-9]*\\)?$" . perl-mode)
+        ("\\.tex\\([;.][0-9]*\\)?$" . latex-mode)
+	("\\.com\\([;.][0-9]*\\)?$" . molpro-mode)
+        ("\\.?+akefile.?+\\" . makefile-mode)
+	("\\.pdb\\([;.][0-9]*\\)?$" . pdb-mode)
+	("\\.vmd?+\\" . tcl-mode)
+        ("\\.tcl\\([;.][0-9]*\\)?$" . tcl-mode)))
+
+
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
+  ;; Your init file should contain only one such instance.
+ '(case-fold-search t)
+ '(current-language-environment "ASCII")
+ '(fortran-blink-matching-if t)
+ '(global-font-lock-mode t nil (font-lock)))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
+  ;; Your init file should contain only one such instance.
+ )
+
+(put 'downcase-region 'disabled nil)
+
+(put 'upcase-region 'disabled nil)
+
+;; (mouse-wheel-mode t)
+
+(load-file "~/.emacs.d/zenburn.el")
+(color-theme-zenburn)
+
+(set-default-font "-bitstream-bitstream vera sans mono-medium-r-normal--12-12-75-75-m-110-iso8859-1")
+
+
+;;(setq default-frame-alist
+;;       '((font . "-*-Courier-normal-r-*-*-13-*-*-*-c-*-iso8859-1")))
+
+
+
+;;;;;;;; My scrolling stuff ;;;;;;;;;;;
+(defun smooth-scroll (increment)
+  (dotimes (i 6) (scroll-up increment) (sit-for 0.005)))
+
+
+(defun smooth-page (increment)
+  (dotimes (i 3)   (scroll-up increment) (sit-for 0.0075) )   
+  (dotimes (i 3)   (scroll-up (* increment 2)) (sit-for 0.0075) ) 
+  (dotimes (i 4)   (scroll-up (* increment 3)) (sit-for 0.0075) ) 
+  (dotimes (i 3)   (scroll-up (* increment 2)) (sit-for 0.0075) ) 
+  (dotimes (i 3)   (scroll-up increment) (sit-for 0.0075) ) 
+
+  )
+
+(global-set-key [(mouse-5)] '(lambda () (interactive) (smooth-scroll 1)))
+(global-set-key [(mouse-4)] '(lambda () (interactive) (smooth-scroll -1)))
+(global-set-key [prior] '(lambda () (interactive) (smooth-page -1)))
+(global-set-key [next] '(lambda () (interactive) (smooth-page 1)))
+
+(setq redisplay-dont-pause t
+  scroll-margin 1
+  scroll-step 1
+  scroll-conservatively 10000
+  scroll-preserve-screen-position 1)

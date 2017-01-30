@@ -1,0 +1,20 @@
+[user]
+	email = 
+	name = Aaron Virshup
+[core]
+	excludesfile = /Users/aaronvirshup/.gitignore_global
+	safecrlf = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[credential]
+	helper = osxkeychain
+[commit]
+	template = /Users/aaronvirshup/.stCommitMsg
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
