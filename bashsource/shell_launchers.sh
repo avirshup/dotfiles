@@ -11,6 +11,6 @@ function mdtrelease() {
     docker run \
 	   -v /var/run/docker.sock:/var/run/docker.sock \
            -v $HOME/.moldesign:/root/.moldesign \
-	   -p 8888:8888 -it \
+	   -p 8890:8888 -it \
 	   docker.io/autodesk/moldesign:moldesign_notebook-$version
 }

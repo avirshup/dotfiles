@@ -18,9 +18,10 @@ function get_pyenv(){
 
 function color_pyenv(){
 	pv=$(get_pyenv)
-	if [ ${pv:0:1} == '3' ]
-	then num="99"
-	else num="34"
+	fc=${pv:0:1}
+	if [ ${fc} == '3' ]; then num="99"
+	elif [ ${fc} == '2' ]; then num="34"
+	else num="36"
 	fi
 	echo $(colornum $pv $num)
 }
