@@ -14,3 +14,13 @@ function mdtrelease() {
 	   -p 8890:8888 -it \
 	   docker.io/autodesk/moldesign:moldesign_notebook-$version
 }
+
+function pyscf-activate(){
+	if [ "${_pyscfactive}" != "1" ]; then
+
+		PYSCFBASE=/Users/aaronvirshup/python_pkg/pyscf_pkg
+	    export DYLD_LIBRARY_PATH=${PYSCFBASE}/pyscf/lib/deps/lib:${DYLD_LIBRARY_PATH}
+	    export PYTHONPATH=${PYSCFBASE}:${PYTHONPATH}
+		export _pyscfactive=1
+	fi
+}

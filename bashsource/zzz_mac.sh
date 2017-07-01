@@ -4,13 +4,25 @@ launchctl setenv AMBERHOME $AMBERHOME
 launchctl setenv GREP_OPTIONS $GREP_OPTIONS
 launchctl setenv LSCOLORS $LSCOLORS
 
+HAPPYMOJI=(😀 😎 😇 🦄 💐 🌮 🍾 🎠 🚀 🎆 🎉 🎊 🎇 🏆 🥇 💰 🤓 😸 👩🏾‍🎓)
+SADMOJI=(🤢 🤕 ☠ 💩 💣 🦂 🔪 🌋 🚑 🚒 🌪 🌩 ⚰ 🚬 🤔 😫 😖 😱 😡 👿 💀 😾 👹 👺)
+
+function happymoji(){
+   echo ${HAPPYMOJI[$(( $RANDOM % 19 ))]}
+}
+
+function sadmoji(){
+   echo ${SADMOJI[$(( $RANDOM % 19 ))]}
+}
+
+
 function notify(){
    $@
    exitcode=$?
    if [ "${exitcode}" -ne 0 ]; then
-      success="ERROR ${exitcode}"
+      success="$(sadmoji) exit code: ${exitcode} $(sadmoji) $(sadmoji) $(sadmoji)"
    else
-      success='Success'
+      success="$(happymoji) Success $(happymoji) $(happymoji) $(happymoji)"
    fi
 
    if [ $# -ge 4 ]; then
