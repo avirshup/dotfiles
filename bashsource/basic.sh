@@ -9,7 +9,6 @@ alias ccat='pygmentize -f terminal'
 alias ssh='ssh -Y'
 export CLICOLOR=1
 alias top='top -o cpu'
-alias diff=colordiff
 export LSCOLORS="ExFxBxDxCxEgEdxbxgxcEd"
 export GREP_OPTIONS='--color=auto'
 
