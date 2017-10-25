@@ -1,12 +1,12 @@
 [user]
-	email = 
+	email = avirshup@gmail.com 
 	name = Aaron Virshup
-[core]
-	excludesfile = /Users/aaronvirshup/.gitignore_global
-	safecrlf = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+[core]
+	excludesfile = ./gitignore_global
+	safecrlf = true
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
