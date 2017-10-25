@@ -1,5 +1,14 @@
+# nodenv
 eval "$(nodenv init -)"
 export PATH="$HOME/.nodenv/bin:$PATH"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# bashmarks
 source ~/.local/bin/bashmarks.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
