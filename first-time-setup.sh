@@ -9,7 +9,7 @@ flagstart="# AMV dotfile setup -- do not edit"
 flagend="# end AMV dotfile setup -- do not edit"
 
 bash_profile_loader="export DOTFILE_HOME=${PWD}
-for file in ${DOTFILE_HOME}/bashsource/*.sh; do
+for file in \${DOTFILE_HOME}/bashsource/*.sh; do
   echo \"==== Sourcing: \$file\"
   source \$file
 done"

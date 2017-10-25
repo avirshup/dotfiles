@@ -1,6 +1,6 @@
 # nodenv
-eval "$(nodenv init -)"
 export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
