@@ -3,12 +3,14 @@ function get_dir(){
 	if [[ ${PWD} == ${HOME} ]]; then
 		echo $(colornum '~' ${thisdir})
 	else
-		subdir=$(dirname ${PWD})
-	    if [[ ${subdir} == ${HOME} ]]
+		subdir=$(dirname "${PWD}")
+	    if [[ "${subdir}" == ${HOME} ]]
 	    then subdir="~"
-	    else subdir=$(basename ${subdir})
+	    else subdir=$(basename "${subdir}")
 	    fi
-		echo "$(colornum ${subdir} ${defcolor})${slash}$(colornum $(basename ${PWD}) ${thisdir})";
+		d1=$(colornum "${subdir}" ${defcolor})
+		d2=$(colornum $(basename "${PWD}") "${thisdir}");
+		echo "${d1}${slash}${d2}"
     fi
 }
 
