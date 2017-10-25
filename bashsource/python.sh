@@ -25,3 +25,24 @@ function from(){
     ipython -i -c "${cmd}"
 }
 
+
+function nb(){
+   if [ "$#" -eq 0 ]; then
+     echo "USAGE: nb [notebook file] [jupyter notebook arguments ...]"
+     exit 1
+   fi
+   file=$1
+   if [ "$file" == "--temp" ]; then
+      dir=$(mktemp -d)
+      echo "Created temp directory at $dir"
+      file=$dir/tempNB.ipynb
+   fi
+   if [ ! -e $file ]; then
+     dir=$(dirname $file)
+     name=$(basename $file .ipynb).ipynb
+     file=$dir/$name
+     echocmd cp $HOME/dotfiles/blank_notebook.ipynb $file
+   fi
+   shift
+   echocmd jupyter notebook $file $@
+}
