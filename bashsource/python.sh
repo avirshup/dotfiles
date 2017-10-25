@@ -41,7 +41,7 @@ function nb(){
      dir=$(dirname $file)
      name=$(basename $file .ipynb).ipynb
      file=$dir/$name
-     echocmd cp $HOME/dotfiles/blank_notebook.ipynb $file
+     echocmd cp ${DOTFILE_HOME}/blank_notebook.ipynb $file
    fi
    shift
    echocmd jupyter notebook $file $@
