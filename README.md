@@ -2,9 +2,12 @@
 
 If you're me, then you'll bootstrap a new machine with:
 
-1. `xcode-select --install`
-1. `git clone https://github.com/avirshup/dotfiles`
-1. `cd dotfiles`
-1. `./install-all.sh`
-1. `./first-time-step.sh`
+`xcode-select --install`
 
+then 
+```bash
+git clone https://github.com/avirshup/dotfiles
+cd dotfiles
+./install-all.sh
+./first-time-setup.sh
+```
