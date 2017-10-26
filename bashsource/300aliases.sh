@@ -2,7 +2,7 @@ function make-alias(){
    name=$1
    target=$2
 
-   if which target &> /dev/null; then
+   if which $target &> /dev/null; then
 	alias $name=$target
    else
 	echo "$target not installed"
