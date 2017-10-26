@@ -1,0 +1,3 @@
+#!/bin/bash
+  containerid=`dps -l -f status=exited | headcut 1 | col 1`
+  denter $containerid
