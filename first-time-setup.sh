@@ -9,10 +9,10 @@ flagstart="# AMV dotfile setup -- do not edit"
 flagend="# end AMV dotfile setup -- do not edit"
 
 bash_profile_loader="export DOTFILE_HOME=${PWD}
-source ${DOTFILE_HOME}/sourceme.sh"
+source \${DOTFILE_HOME}/sourceme.sh"
 
 git_loader="[include]
-   path = ${DOTFILE_HOME}/etc/gitconfig
+   path = ${PWD}/etc/gitconfig
 "
 
 function add-to-file(){
