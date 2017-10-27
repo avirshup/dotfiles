@@ -1,0 +1,8 @@
+#!/bin/bash
+
+    if [ "$2" == '--socket' ] ; then
+       flags='-v /var/run/docker.sock:/var/run/docker.sock'
+    else
+       flags=''
+    fi
+    echocmd docker run $flags -it --entrypoint=bash $1

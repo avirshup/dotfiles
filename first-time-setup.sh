@@ -1,9 +1,10 @@
 #!/bin/bash
 
-function echocmd(){ #echo the command and then run it
-   echo "> $@"
-   $@
-}
+if [ -e $HOME/.mackup.cfg ]; then
+  echo "Won't overwrite existing mackup configuration"
+else
+  echocmd ln -s ${PWD}/etc/mackup.cfg $HOME/.mackup.cfg
+fi
 
 flagstart="# AMV dotfile setup -- do not edit"
 flagend="# end AMV dotfile setup -- do not edit"

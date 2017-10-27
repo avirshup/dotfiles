@@ -5,3 +5,5 @@ cd ~/.nodenv && src/configure && make -C src || echo "Failed to compile nodenv b
 
 echo "Installed nodenv"
 
+eval "$(nodenv init -)"
+nodenv install 6.11.3
