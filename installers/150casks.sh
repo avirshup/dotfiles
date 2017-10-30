@@ -11,9 +11,10 @@ for app in "google-chrome
 	bettertouchtool
 	mactex
 	latexit
-	texmaker"; do
+	texmaker
+	sketch
+	pinegrow-web-designer"; do
 	
-
 	echocmd brew cask install $app
 done
 
