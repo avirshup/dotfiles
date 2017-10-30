@@ -12,5 +12,6 @@ imagemagick
 wget
 vim
 colordiff
-mackup"
+mackup
+the_silver_searcher"
 

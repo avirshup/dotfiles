@@ -8,7 +8,11 @@ for app in "google-chrome
 	istat-menus
 	avogadro
 	pycharm-ce
-	bettertouchtool"; do
+	bettertouchtool
+	mactex
+	latexit
+	texmaker"; do
+	
 
 	echocmd brew cask install $app
 done
