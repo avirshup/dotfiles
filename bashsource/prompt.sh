@@ -46,5 +46,8 @@ start=$(colornum "[" $defcolor)
 end=$(colornum "]\\$" $defcolor)
 slash=$(colornum '/' $defcolor)
 
-
-PROMPT_COMMAND='export PS1="${start}$(color_pyenv) $(get_dir)${end} "'
+if which pyenv && get_pyenv &>/dev/null ; then
+    PROMPT_COMMAND='export PS1="${start}$(color_pyenv) $(get_dir)${end} "'
+else
+    PROMPT_COMMAND='export PS1="${start}$(hostname) $(get_dir)${end} "'
+fi
