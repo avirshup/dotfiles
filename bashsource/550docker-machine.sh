@@ -5,6 +5,9 @@ export DEFAULT_MACHINE="default"
 alias dm="docker-machine"
 alias dmls="docker-machine ls"
 
+function denv(){
+  eval $(docker-machine env)
+}
 
 function docker-clean-images(){
    untagged=$(docker images | grep '<none>' | col 3)
