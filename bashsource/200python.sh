@@ -1,11 +1,8 @@
-export PYTHONPATH=$HOME/python_pkg
+append-pathvar PYTHONPATH $HOME/python_pkg
 
 # my interpreters
-alias py2="pyenv shell 2.7.13"
-alias py3="pyenv shell 3.6.1"
-alias pyconda3="pyenv shell py36"
-alias pyconda35="pyenv shell miniconda3-4.1.11"
-alias pyconda2="pyenv shell miniconda2-4.1.11"
+alias py2="pyenv shell miniconda-latest"
+alias py3="pyenv shell miniconda3-latest"
 
 
 function import(){
@@ -18,6 +15,4 @@ function from(){
         cmd="from $@"
     ipython -i -c "${cmd}"
 }
-
-
 

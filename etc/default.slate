@@ -23,17 +23,23 @@ bind pad4:ctrl;alt   corner top-left resize:screenSizeX/2;screenSizeY
 bind pad8:ctrl;alt   corner top-right resize:screenSizeX;screenSizeY/2
 bind pad2:ctrl;alt   corner bottom-left resize:screenSizeX;screenSizeY/2
 
-# screen edges5
-bind right:alt;ctrl;cmd   push right
-bind left:alt;ctrl;cmd   push left
-bind up:alt;ctrl;cmd   push up
-bind down:alt;ctrl;cmd   push down
+# screen edges
+bind right:alt;ctrl   push right
+bind left:alt;ctrl   push left
+bind up:alt;ctrl   push up
+bind down:alt;ctrl   push down
+
+# side resize
+#bind right:alt;ctrl;cmd   corner top-right resize:screenSizeX/2;screenSizeY
+#bind left:alt;ctrl;cmd   corner top-left resize:screenSizeX/2;screenSizeY
+#bind up:alt;ctrl;cmd   corner top-right resize:screenSizeX;screenSizeY/2
+#bind down:alt;ctrl;cmd   corner bottom-left resize:screenSizeX;screenSizeY/2
 
 # Nudge Bindings
-bind right:alt;ctrl nudge +5% +0
-bind left:alt;ctrl  nudge -5% +0
-bind up:alt;ctrl    nudge +0   -10%
-bind down:alt;ctrl  nudge +0   +10%
+bind l:alt;ctrl nudge +5% +0
+bind j:alt;ctrl  nudge -5% +0
+bind i:alt;ctrl    nudge +0   -10%
+bind k:alt;ctrl  nudge +0   +10%
 
 # Throw Bindings
 bind 1:ctrl;alt         throw 0 resize
@@ -45,10 +51,10 @@ bind up:ctrl;alt;cmd    throw up    resize
 bind down:ctrl;alt;cmd  throw down  resize
 
 # Focus Bindings
-bind right:cmd    focus right
-bind left:cmd     focus left
-bind up:cmd       focus up
-bind down:cmd     focus down
+bind right:cmd;shift    focus right
+bind left:cmd;shift     focus left
+bind up:cmd;shift        focus up
+bind down:cmd;shift     focus down
 bind up:cmd;alt   focus behind
 bind down:cmd;alt focus behind
 

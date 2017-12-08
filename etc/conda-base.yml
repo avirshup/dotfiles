@@ -1,0 +1,5 @@
+name: base-conda
+channels:
+    - default
+dependencies:
+     
