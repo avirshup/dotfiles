@@ -14,7 +14,7 @@ function add-to-file(){
 	content=$2
 
 	if [ -z $3 ]; then
-	    comment="\#"
+	    comment="#"
 	else
 	    comment=$3
 	fi
