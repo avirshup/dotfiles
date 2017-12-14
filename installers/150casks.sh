@@ -9,7 +9,7 @@ for app in \
 	jet \
 	docker \
 	sourcetree \
-	istat-menus \
+	istat-menus-5 \
 	avogadro \
 	pycharm-ce \
 	bettertouchtool \
@@ -20,6 +20,9 @@ for app in \
 	slack \
 	webstorm \
     slate \
+    dropbox \
+    alfred \
+    microsoft-office \
 	steermouse; do
 	
 	echocmd brew cask install $app

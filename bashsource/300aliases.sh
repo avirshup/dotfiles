@@ -12,6 +12,9 @@ function make-alias(){
 make-alias diff colordiff
 make-alias vi vim
 
+alias conda2="pyenv shell miniconda-latest"
+alias conda3="pyenv shell miniconda3-latest"
+
 
 function pyscf-activate(){
 	if [ "${_pyscfactive}" != "1" ]; then
