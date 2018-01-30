@@ -40,13 +40,19 @@ function colornum(){
 	echo "\[$(tput setaf $2)\]$1\[$(tput sgr0)\]"
 }
 
+function get-hostname(){
+	# https://stackoverflow.com/a/5268527/1958900
+	h=$(hostname | cut -d"." -f1)
+	echo $(colornum "${h}" 160)
+}
+
 defcolor="246"
 start=$(colornum "[" $defcolor)
 end=$(colornum "]\\$" $defcolor)
 slash=$(colornum '/' $defcolor)
 
 if [ -f ${PYENV_ROOT}/bin/pyenv ] && get_pyenv &>/dev/null ; then
-    PROMPT_COMMAND='export PS1="${start}$(color_pyenv) $(get_dir)${end} "'
+    PROMPT_COMMAND='export PS1="$(get-hostname) ${start}$(color_pyenv) $(get_dir)${end} "'
 else
     PROMPT_COMMAND='export PS1="${start}$(hostname) $(get_dir)${end} "'
 fi

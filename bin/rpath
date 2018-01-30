@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+plat=$(uname)
+
+if [ ${plat} == "Darwin" ]; then
+    otool -l $1 | grep LC_RPATH -A2
+else
+    echo "Platform '${plat}' not supported"
+    exit 1
+fi
+
