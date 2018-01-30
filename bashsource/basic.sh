@@ -1,6 +1,6 @@
 #always output human-readable sizes
 alias df='df -h'
-alias ls='ls -h'
+alias ls='ls -h --color=auto'
 alias du='du -h'
 alias units='units -v'
 stty erase ^H
