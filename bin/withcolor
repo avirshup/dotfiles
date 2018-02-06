@@ -1,0 +1,55 @@
+#!/bin/bash
+# adapted from https://superuser.com/a/316376/778483
+ 
+hostspec=$2
+host=$(echo $hostspec | sed -e 's/^.*@//' -e 's/\..*$//')
+
+
+function convert_color() {
+    python -c "numbers=map(int, '${1}'.split(',')); print(', '.join(map(lambda x:str(x*256), numbers)))"
+}
+
+# AMV MOD - uses 0-255 color scales, not 0-65535
+# The default opacity value if not specified (0-65535)
+#default_opacity=255
+ 
+# The default color which will be used when not connected to any host.
+default_color=$(convert_color "0,32,41")  # , $default_opacity"
+ 
+case "${host}" in
+### Add matching host cases here:
+# separate with only comma, no spaces
+    [a-gA-G]*) host_color=$(convert_color "40,0,0");;
+    [H-Mh-m]*) host_color=$(convert_color "0,0,40");;
+    [m-sM-S]*) host_color=$(convert_color "0,40,0");;
+    *) host_color=$(convert_color "0,58,57");;
+esac
+ 
+window_name="${host}_SSH_$$"
+ 
+trap cleanup 1 2 3 6
+ 
+function cleanup() {
+    set_color "$default_color"
+    echo -ne "\033]0;\007"
+}
+ 
+function set_color() {
+    case "$TERM_PROGRAM" in
+    Apple_Terminal)
+        echo -ne "\033]0;${window_name}\007"
+        osascript -e 'tell application "Terminal" to tell (first window whose name contains "'${window_name}'") to set background color to {'"$1"'}' 2>/dev/null
+        if [ $? != 0 ]; then
+                osascript -e 'tell application "Terminal" to tell its first window to set its background color to {'"$1"'}'
+        fi
+        ;;
+    iTerm.app)
+        osascript -e 'tell application "iTerm" to set background color of (current session of current terminal) to {'"$1"'}'
+        ;;
+    esac
+}
+
+ 
+set_color "$host_color"
+$@
+cleanup
