@@ -1,6 +1,11 @@
 # me
 prepend-pathvar PATH $HOME/bin
 
+# completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
+
 
 # nodenv
 export NODENV_ROOT="$HOME/.nodenv"

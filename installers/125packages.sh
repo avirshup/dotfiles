@@ -14,6 +14,7 @@ for pkg in \
     mackup \
     jq \
     dbus \
+    bash-completion \
     the_silver_searcher; do
 
 	echocmd brew install $pkg
