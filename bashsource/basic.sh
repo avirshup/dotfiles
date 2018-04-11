@@ -1,6 +1,11 @@
 #always output human-readable sizes
 alias df='df -h'
-alias ls='ls -h --color=auto'
+
+if [ "$(uname)" != 'Darwin' ]; then
+    alias ls='ls -h --color=auto'
+else
+    alias ls='ls -h'
+fi
 alias du='du -h'
 alias units='units -v'
 stty erase ^H
