@@ -15,7 +15,12 @@ function get_dir(){
 }
 
 function get_pyenv(){
-	[ ${PYENV_VERSION} ] && echo ${PYENV_VERSION} || cat ${HOME}/.pyenv/version
+	v=$(pyenv version-name)
+    if [ ! -z "${v}" ]; then
+	    echo ${v}
+    else
+        echo system
+    fi
 }
 
 function color_pyenv(){
@@ -58,8 +63,11 @@ start=$(colornum "[" $defcolor)
 end=$(colornum "]\\$" $defcolor)
 slash=$(colornum '/' $defcolor)
 
-if [ -f ${PYENV_ROOT}/bin/pyenv ] && get_pyenv &>/dev/null ; then
-    PROMPT_COMMAND='export PS1="$(get-hostname) ${start}$(color_pyenv) $(get_dir)${end} "'
+hash conda &> /dev/null
+conda_exists=$?
+
+if [ ${conda_exists} ] ; then
+    PROMPT_COMMAND='export PS1="${start}$(get-hostname) $(color_pyenv) $(get_dir)${end} "'
 else
     PROMPT_COMMAND='export PS1="${start}$(hostname) $(get_dir)${end} "'
 fi

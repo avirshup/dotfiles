@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Forward sigterm to the server - https://unix.stackexchange.com/a/146770/257597
+_term() { 
+  echo "Shutting down hg-serve" 
+  kill -TERM "${serverproc}"
+  exit 0
+}
+
+trap _term SIGTERM
+trap _term SIGINT
+
+check-port() {
+    curl --silent --fail http://localhost:${1} > /dev/null
+}
+
+for PORT in $(seq 8001 8079); do
+    check-port $PORT
+    if [ $? -ne 0 ]; then
+      break;  # nothing using this port
+  fi
+done
+echo "Using port ${PORT}"
+
+
+# Wait for server to activate - https://stackoverflow.com/a/21189440/1958900
+hg serve --port ${PORT} &
+serverproc=$!
+until check-port ${PORT}; do
+    printf '.'
+    sleep 1
+done
+
+Open "http://localhost:${PORT}/graph"
+echo 'Ctrl-c to exit hg serve'
+wait "${serverproc}"

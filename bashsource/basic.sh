@@ -13,4 +13,13 @@ alias top='top -o cpu'
 export LSCOLORS="ExFxBxDxCxEgEdxbxgxcEd"
 export GREP_OPTIONS='--color=auto'
 
+exportenv () {
+    # FROM https://stackoverflow.com/a/20909045/1958900
+    if [ $# != 1 ] ; then
+        echo 'USAGE: exportenv [env file]'
+        return 1
+    fi
+
+    export $(cat $1 | grep -v '^#' | xargs)
+}
 
