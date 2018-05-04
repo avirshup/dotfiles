@@ -4,17 +4,17 @@ alias df='df -h'
 if [ "$(uname)" != 'Darwin' ]; then
     alias ls='ls -h --color=auto'
 else
+    alias top='top -o cpu'
     alias ls='ls -h'
+    alias ssh='withtheme ssh'
+    alias mosh='withtheme mosh'
 fi
+export CLICOLOR=1
 alias du='du -h'
 alias units='units -v'
 stty erase ^H
 
 alias ccat='pygmentize -f terminal'
-alias ssh='withtheme ssh'
-alias mosh='withtheme mosh'
-export CLICOLOR=1
-alias top='top -o cpu'
 export LSCOLORS="ExFxBxDxCxEgEdxbxgxcEd"
 export GREP_OPTIONS='--color=auto'
 
