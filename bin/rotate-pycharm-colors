@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# Randomly pick a color scheme for pycharm, but use my preferred fonts
+
+set -e 
+
+if [ $(uname) == "Darwin" ]; then
+    PREFDIRS="$HOME/Library/Preferences/PyCharm*"
+else
+    echo "Only works on mac right now"
+    exit 1
+fi
+
+
+OPTIONDIR=$(ls -trd  ${PREFDIRS} | tail -n1)/options
+echo Prefs in ${OPTIONDIR}
+
+
+
+# modify color scheme
+cd $OPTIONDIR
+
+if [ ! -e colors.scheme.xml ]; then
+    echo "No color scheme file found"
+    exit 1
+fi
+
+modify-scheme(){
+    cd $OPTIONDIR
+
+    if [ ! -e colors.scheme.xml.bak ]; then
+        bakflag="-i.bak"
+    else
+        bakflag="-i.last"
+    fi
+
+    oldscheme=$(sed -n -e 's/.*<global_color_scheme name="_@user_\([^"]*\)" \/>/\1/p' colors.scheme.xml)
+    newscheme=$(get-random-scheme)
+    echo "PyCharm color scheme: \"${oldscheme}\" -> \"${newscheme}\""
+
+    # get around some weird newline by defining this separately
+    searchstring='s/"_@user_.*"/"_@user_'$newscheme'"/'
+    sed ${bakflag} "$searchstring" colors.scheme.xml
+}
+
+# disabled: Codecourse Scorch
+
+get-random-scheme(){
+   schemes="Absent Allure Arstotzka Azure Banner Blink Bold Boxuk Brave Carbonight Chocolate Coffee Comrade Crackpot Crisp Dare Darkside Downpour Earthsong Fodder Frantic Freshcut Friction Frontier Github Glance Gloom Glowfish Goldfish Grunge Halflife Hawaii Heroku Hive Horizon Hub Hyrule Iceberg Isotope Jewel Jingle Joker Juicy Jumper Keen Kiwi Laracasts Laravel Lavender Legacy Lichen Loyal Mauve Mellow Mintchoc Monzo Morass Mud Newton Otakon Overflow Pastel Patriot Peacock Peacocks-In-Space Peel Penitent Piggy Pleasure Potpourri Prime Rainbow Rebellion Revelation Service Shrek Slate Slime Snappy Solarflare Soup Sourlick Spearmint Spitfire Stark Stasis Stealth Storm Super Tame Tetra Tickle Tonic Tribal Tron Turnip Tweed Userscape Vegetable Violaceous Volatile Warlock Waste Yitzchok Yule Zacks"
+   scheme=$(python -c 'import random, sys; print(random.choice(sys.argv[1].split()).replace("-"," "), end="")' "${schemes}")
+   if [ "$((RANDOM % 2))" == 0 ]; then
+      scheme="${scheme} Contrast"
+   fi
+   echo -n "${scheme} (rainglow)"
+}
+
+modify-scheme
+
