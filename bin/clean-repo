@@ -1,0 +1,40 @@
+#!/bin/bash
+
+repotype(){
+    temp=$(git rev-parse --git-dir 1>/dev/null 2>&1)
+    if [ $? == 0 ]; then
+        echo git
+        return 0
+    fi;
+
+    temp=$(hg --cwd $(pwd) root 1>/dev/null 2>&1)
+    if [ $? == 0 ]; then
+        echo hg
+        return 0
+    fi;
+
+    echo "Not in a git or hg repository"
+    exit 1
+}
+
+repo=$(repotype)
+
+if [ ${repo} == git ]; then
+    git clean -x -d -i
+
+elif [ ${repo} == hg ]; then
+    echo "To by purged:"
+    hg purge --all -p | sed 's/^/ /'
+
+    echo
+    echo "Proceed? (y/n)"
+    read response
+
+    if [ "${response}" == "y" ]; then
+        hg purge --all 
+    fi
+
+else
+    echo 'Unknown repo type "'${repo}'"'
+    exit 1
+fi
