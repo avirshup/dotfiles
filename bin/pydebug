@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: pydebug [python script] [arguments...]"
+    exit 1
+fi
+
+exe=$(pyenv which $1 2>/dev/null)
+if [ $? != 0 ]; then
+    exe=$(which $1)
+    if [ $? != 0 ]; then
+        echo "Script $1 not found."
+        exit 1
+    fi
+fi
+
+echocmd python -m pdb -c continue ${exe} ${@:2}
