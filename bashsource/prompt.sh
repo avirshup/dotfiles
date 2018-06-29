@@ -42,8 +42,14 @@ function colornum(){
 
 function get-hostname(){
 	# https://stackoverflow.com/a/5268527/1958900
-	h=$(hostname | cut -d"." -f1)
-	echo $(colornum "${h}" 160)
+    h=$(hostname)
+    firstname=$(hostname | cut -d"." -f1)
+    if [ ${h##*.} == 'local' ]; then
+        hostcolor=22
+    else
+        hostcolor=160
+    fi
+	echo $(colornum "${firstname}" ${hostcolor})
 }
 
 defcolor="246"

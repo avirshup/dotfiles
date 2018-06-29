@@ -1,6 +1,6 @@
 # me
 prepend-pathvar PATH $HOME/bin
-
+prepend-pathvar PATH $HOME/.local/bin
 
 # nodenv
 export NODENV_ROOT="$HOME/.nodenv"
