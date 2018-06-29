@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "$(uname)" == "Darwin" ]; then
+    cmd='stat -f'
+    fmt='%A'
+else
+    cmd='stat -c'
+    fmt='%a'
+fi
+
+
+if [ $# != 1 ]; then
+    echo "USAGE: octal-permissions [FILE]"
+    exit 1
+fi
+
+${cmd} "${fmt}" $1

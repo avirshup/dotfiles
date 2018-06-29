@@ -23,10 +23,16 @@ if [ ${repo} == git ]; then
     git clean -x -d -i
 
 elif [ ${repo} == hg ]; then
-    echo "To by purged:"
-    hg purge --all -p | sed 's/^/ /'
+    tobepurged=$(hg purge --all -p)
 
-    echo
+    if [ -z "$tobepurged" ]; then
+        echo "Nothing to do - repo is clean."
+        exit 0
+    fi
+
+    echo "Will purge: "
+    echo -n "  "
+    echo -n ${tobepurged} | sed 's/ /\'$'\n  /g'  # https://stackoverflow.com/a/11163357/1958900
     echo "Proceed? (y/n)"
     read response
 
