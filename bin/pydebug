@@ -5,12 +5,16 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-exe=$(pyenv which $1 2>/dev/null)
-if [ $? != 0 ]; then
-    exe=$(which $1)
+if [ -x "$1" ]; then
+    exe=$1
+else
+    exe=$(pyenv which $1 2>/dev/null)
     if [ $? != 0 ]; then
+      exe=$(which $1)
+      if [ $? != 0 ]; then
         echo "Script $1 not found."
         exit 1
+      fi
     fi
 fi
 
