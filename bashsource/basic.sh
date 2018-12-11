@@ -14,6 +14,7 @@ export CLICOLOR=1
 alias du='du -h'
 alias units='units -v'
 alias grep='grep --color=auto'
+alias tree='tree -C'
 
 if [ "$(uname)" == "Darwin" ]; then 
    alias top='top -o cpu'
