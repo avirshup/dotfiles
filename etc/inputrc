@@ -16,6 +16,9 @@
 "\e[F": end-of-line
 
 set completion-ignore-case On
+set blink-matching-paren On
+set colored-stats On
+set colored-completion-prefix On
 set expand-tilde on
 set convert-meta off
 set input-meta on
