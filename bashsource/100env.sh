@@ -2,6 +2,11 @@
 prepend-pathvar PATH $HOME/bin
 prepend-pathvar PATH $HOME/.local/bin
 
+export HISTSIZE=5000
+export HISTFILESIZE=5000
+export HISTCONTROL="$HISTCONTROL:ignoredups"
+export HISTIGNORE="ls:ls -l:top"
+
 # nodenv
 export NODENV_ROOT="$HOME/.nodenv"
 if [ -f ${NODENV_ROOT}/bin/nodenv ]; then
