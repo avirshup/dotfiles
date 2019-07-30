@@ -1,0 +1,6 @@
+#!/bin/bash
+# Uses kpcli for quick access to passwords
+
+TIMEOUT=15
+
+kpcli --kdb=${HOME}/.kp.kdbx --readonly --command "xpx /Root/$1"

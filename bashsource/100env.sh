@@ -1,16 +1,22 @@
 # me
 prepend-pathvar PATH $HOME/bin
+prepend-pathvar PATH $HOME/.local/bin
 
 # completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 . $(brew --prefix)/etc/bash_completion
 fi
 
+export HISTSIZE=5000
+export HISTFILESIZE=5000
+export HISTCONTROL="$HISTCONTROL:ignoredups"
+export HISTIGNORE="ls:ls -l:top"
+
 
 # nodenv
 export NODENV_ROOT="$HOME/.nodenv"
 if [ -f ${NODENV_ROOT}/bin/nodenv ]; then
-   append-pathvar PATH ${NODENV_ROOT}/bin
+   prepend-pathvar PATH ${NODENV_ROOT}/bin
    eval "$(nodenv init -)"
 else
 	echo "nodenv not installed"
@@ -20,7 +26,7 @@ fi
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -f ${PYENV_ROOT}/bin/pyenv ]; then
-   append-pathvar PATH ${PYENV_ROOT}/bin
+   prepend-pathvar PATH ${PYENV_ROOT}/bin
    eval "$(pyenv init -)"
    eval "$(pyenv virtualenv-init -)"
 else
@@ -30,7 +36,6 @@ fi
 
 # bashmarks
 source ~/.local/bin/bashmarks.sh
-prepend-pathvar PATH /usr/local/bin
 append-pathvar MANPATH /usr/man:/usr/local/man
 export EDITOR=vi
 export SVN_EDITOR=vi

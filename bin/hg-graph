@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Forward sigterm to the server - https://unix.stackexchange.com/a/146770/257597
+_term() { 
+  echo "Shutting down hg-serve" 
+  kill -TERM "${serverproc}"
+  exit 0
+}
+
+trap _term SIGTERM
+trap _term SIGINT
+
+
+PORT=$(get-open-port)
+echo "Using port ${PORT}"
+
+check-port() {
+    curl --silent --fail http://localhost:${1} > /dev/null
+}
+
+# Wait for server to activate - https://stackoverflow.com/a/21189440/1958900
+hg serve --port ${PORT} &
+serverproc=$!
+until check-port ${PORT}; do
+    printf '.'
+    sleep 1
+done
+
+url='http://localhost:'${PORT}'/graph'
+
+if [ "$(uname)" == "Darwin" ]; then
+    Open "${url}"
+else
+    echo "Graph is being served at ${url}"
+fi
+echo 'Ctrl-c to exit hg serve'
+wait "${serverproc}"
