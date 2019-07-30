@@ -1,6 +1,5 @@
 #always output human-readable sizes
 alias df='df -h'
-alias ls='ls -h --color=auto'
 alias du='du -h'
 alias units='units -v'
 stty erase ^H
@@ -11,6 +10,13 @@ alias mosh='withtheme mosh'
 export CLICOLOR=1
 alias top='top -o cpu'
 export LSCOLORS="ExFxBxDxCxEgEdxbxgxcEd"
-export GREP_OPTIONS='--color=auto'
 
+
+if [ "$(uname)" == 'Darwin' ]; then
+    export GREP_OPTIONS='--color=auto'
+    alias ls='ls -hG'
+else
+    alias ls='ls -h --color=auto'
+    alias grep='grep --color=auto'
+fi
 
