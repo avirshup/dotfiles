@@ -2,10 +2,16 @@
 prepend-pathvar PATH $HOME/bin
 prepend-pathvar PATH $HOME/.local/bin
 
+# completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
+
 export HISTSIZE=5000
 export HISTFILESIZE=5000
 export HISTCONTROL="$HISTCONTROL:ignoredups"
 export HISTIGNORE="ls:ls -l:top"
+
 
 # nodenv
 export NODENV_ROOT="$HOME/.nodenv"

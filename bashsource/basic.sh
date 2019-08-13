@@ -2,12 +2,15 @@
 alias df='df -h'
 
 if [ "$(uname)" != 'Darwin' ]; then
-    alias ls='ls -h --color=auto'
+    alias ls='ls -hG --color=auto'
+    export GREP_OPTIONS='--color=auto'
+
 else
     alias top='top -o cpu'
     alias ls='ls -h'
     alias ssh='withtheme ssh'
     alias mosh='withtheme mosh'
+    alias grep='grep --color=auto'
 fi
 export CLICOLOR=1
 
@@ -37,4 +40,3 @@ exportenv () {
 
     export $(cat $1 | grep -v '^#' | xargs)
 }
-
