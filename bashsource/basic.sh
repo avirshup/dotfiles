@@ -16,6 +16,10 @@ alias units='units -v'
 alias grep='grep --color=auto'
 alias tree='tree -C'
 
+psgrep() {
+    ps aux -NC grep | grep $@
+}
+
 if [ "$(uname)" == "Darwin" ]; then 
    alias top='top -o cpu'
 fi
