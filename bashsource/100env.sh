@@ -3,8 +3,10 @@ prepend-pathvar PATH $HOME/bin
 prepend-pathvar PATH $HOME/.local/bin
 
 # completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. $(brew --prefix)/etc/bash_completion
+if command -v brew; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    fi
 fi
 
 export HISTSIZE=5000
