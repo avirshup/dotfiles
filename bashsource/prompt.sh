@@ -71,7 +71,8 @@ show_tput_colors(){
 
 function color-by-first-letter(){
     letter=${1:0:1}
-    color=${lettercolors[${letter,,}]}
+
+    color=${lettercolors[${letter,,}]}  # this requires bash>4, not default on macs ...
     if [ -z "${color}" ]; then
         color=$defcolor
     fi
