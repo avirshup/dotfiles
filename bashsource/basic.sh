@@ -2,12 +2,12 @@
 alias df='df -h'
 
 if [ "$(uname)" != 'Darwin' ]; then
-    alias ls='ls -hG --color=auto'
+    alias ls='ls -h --color=auto'
     export GREP_OPTIONS='--color=auto'
 
 else
     alias top='top -o cpu'
-    alias ls='ls -h'
+    alias ls='ls -hG'
     alias ssh='withtheme ssh'
     alias mosh='withtheme mosh'
     alias grep='grep --color=auto'
@@ -18,6 +18,10 @@ alias du='du -h'
 alias units='units -v'
 alias grep='grep --color=auto'
 alias tree='tree -C'
+
+psgrep() {
+    ps aux -NC grep | grep $@
+}
 
 if [ "$(uname)" == "Darwin" ]; then 
    alias top='top -o cpu'
