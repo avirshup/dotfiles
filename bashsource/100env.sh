@@ -30,7 +30,7 @@ fi
 
 # bashmarks
 source ~/.local/bin/bashmarks.sh
-append-pathvar MANPATH /usr/man:/usr/local/man
+append-pathvar MANPATH /usr/share/man:/usr/local/share/man
 export EDITOR=vi
 export SVN_EDITOR=vi
 
