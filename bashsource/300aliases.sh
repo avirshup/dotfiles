@@ -15,6 +15,14 @@ make-alias vi vim
 
 alias conda2="pyenv shell miniconda-latest"
 alias conda3="pyenv shell miniconda3-latest"
+alias pyshell="pyenv shell"
+alias py.test="py.test -rEf" 
+
+if [ "$(uname)" == "Darwin" ]; then
+	cpcb() {
+		echo -n "$($@)" | pbcopy
+	}
+fi
 
 
 function pyscf-activate(){
