@@ -14,17 +14,22 @@ declare -A lettercolors=([l]=$green [p]=$orange [m]=$red [b]=$blue)
 
 
 function get_dir(){
-    thisdir='75'
+    thisdircolor='75'
     if [[ "${PWD}" == "${HOME}" ]]; then
-        colortext '~' ${thisdir}
+        colortext '~' ${thisdircolor}
     else
         subdir=$(dirname "${PWD}")
         if [[ "${subdir}" == "${HOME}" ]]
-        then subdir="~"
-        else subdir=$(basename "${subdir}")
+            then subdir="~"
+        else
+            subdir=$(basename "${subdir}")
         fi
+        if [[ "${subdir}" == "/" ]]; then
+            subdir=""
+        fi
+        thisdir=$(basename "${PWD}")
         d1=$(colortext "${subdir}" "${defcolor}")
-        d2=$(colortext $(basename "${PWD}") "${thisdir}");
+        d2=$(colortext "${thisdir}" "${thisdircolor}");
         echo "${d1}${slash}${d2}"
     fi
 }
