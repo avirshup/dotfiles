@@ -62,11 +62,18 @@ show_tput_colors(){
 }
 
 
+<<<<<<< HEAD
 function color-by-hash(){
     hashnum=$(cksum <<< $1 | cut -f 1 -d ' ')
     num=${hashnum: -1}
     
     color=${numcolors[${num,,}]}
+=======
+function color-by-first-letter(){
+    letter=${1:0:1}
+
+    color=${lettercolors[${letter,,}]}  # this requires bash>4, not default on macs ...
+>>>>>>> 268ec87893e934942c8b1aac78c4f9575f1587ba
     if [ -z "${color}" ]; then
         color=$defcolor
     fi
