@@ -9,8 +9,12 @@ blue=75
 purple=99
 darkgreen=34
 forest=36
+taupe=242
+crimson=125
+mauve=54
+barf=100
 
-declare -A lettercolors=([l]=$green [p]=$orange [m]=$red [b]=$blue)
+declare -A numcolors=([0]=$green [1]=$orange [2]=$red [3]=$blue [4]=$purple [5]=$taupe [6]=$forest [7]=$crimson [8]=$mauve [9]=$barf)
 
 
 function get_dir(){
@@ -36,24 +40,8 @@ function get_dir(){
 
 function get_pyenv(){    
     v=$(pyenv version-name)
-    if [[ "${v}" == *"conda"* ]]; then
-        if [ ! -z "$CONDA_DEFAULT_ENV" ] && [ "$CONDA_DEFAULT_ENV" != 'root' ]; then
-            colortext "$CONDA_DEFAULT_ENV" $orange
-        else
-            colortext "${v}" "$purple"
-        fi
-    elif [ ! -z "${v}" ]; then
-        if [ "${v}" == "${CONDA_DEFAULT_ENV}" ]; then
-            colortext "$CONDA_DEFAULT_ENV" $orange
-        elif [ ${v:0:1} == '2' ]; then
-            colortext "${v}" $red
-        elif [ ${v:0:1} == '3' ]; then
-            colortext "${v}" $blue
-        elif [ "$v" == 'system' ]; then
-            colortext "${v}" $white
-        else
-            colortext "${v}" "$purple"
-        fi
+    if [ ! -z "${v}" ]; then
+        color-by-hash "$v"
     else
         colortext system $white
     fi
@@ -74,9 +62,11 @@ show_tput_colors(){
 }
 
 
-function color-by-first-letter(){
-    letter=${1:0:1}
-    color=${lettercolors[${letter,,}]}
+function color-by-hash(){
+    hashnum=$(cksum <<< $1 | cut -f 1 -d ' ')
+    num=${hashnum: -1}
+    
+    color=${numcolors[${num,,}]}
     if [ -z "${color}" ]; then
         color=$defcolor
     fi
@@ -87,7 +77,7 @@ function get-hostname(){
     # https://stackoverflow.com/a/5268527/1958900
     h=$(hostname)
     firstname=$(hostname | cut -d"." -f1)
-    color-by-first-letter "${firstname}"
+    color-by-hash "${firstname}"
 }
 
 defcolor=$white
