@@ -85,10 +85,8 @@ start=$(colortext "[" $defcolor)
 end=$(colortext "]\\$" $defcolor)
 slash=$(colortext '/' $defcolor)
 
-hash pyenv &> /dev/null
-pyenv_exists=$?
 
-if [ ${pyenv_exists} ] ; then
+if command -v pyenv &> /dev/null ; then
     PROMPT_COMMAND='export PS1="${start}$(get-hostname) $(get_pyenv) $(get_dir)${end} "'
 else
     PROMPT_COMMAND='export PS1="${start}$(hostname) $(get_dir)${end} "'
