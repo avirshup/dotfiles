@@ -140,34 +140,7 @@
                     ],
                     "to": [
                         {
-                            "key_code": "left_gui"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "description": "hold end to close window",
-            "manipulators": [
-                {
-                    "type": "basic",
-                    "from": {
-                        "key_code": "end",
-                        "modifiers": {
-                            "optional": [
-                                "any"
-                            ]
-                        }
-                    },
-                    "to_if_held_down": [
-                        {
-                            "key_code": "w",
-                            "modifiers": ["command"]
-                        }
-                    ],
-                    "to": [
-                        {
-                            "key_code": "end"
+                            "key_code": "right_gui"
                         }
                     ]
                 }

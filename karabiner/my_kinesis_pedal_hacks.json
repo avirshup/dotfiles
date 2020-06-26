@@ -80,7 +80,8 @@
           },
           "to": [
             {
-              "key_code": "left_shift"
+              "key_code": "v",
+              "modifiers": ["command", "option"]
             }
           ]
         }

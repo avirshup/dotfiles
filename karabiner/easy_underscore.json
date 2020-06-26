@@ -9,16 +9,13 @@
           "from": {
             "key_code": "non_us_backslash",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
             }
           },
           "to": [
             {
               "key_code": "hyphen",
               "modifiers": [
-                "left_shift"
+                "shift"
               ]
             }
           ]
@@ -32,7 +29,7 @@
                 "caps_lock"
               ],
               "mandatory": [
-                "left_shift"
+                "shift"
               ]
             }
           },
