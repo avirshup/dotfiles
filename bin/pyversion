@@ -5,10 +5,14 @@ import sys
 sys.path.insert(0, '.')
 exec('import %s as mod' % sys.argv[1])
 
-try: pth = mod.__file__
-except AttributeError: pth = 'could not resolve `module.__file__`'
+try:
+    pth = mod.__file__
+except AttributeError:
+    pth = 'could not resolve `module.__file__`'
 
-try: version = mod.__version__
-except AttributeError: version = 'no version info'
-print(pth + ':', version)
+try:
+    version = mod.__version__
+except Exception as exc:
+    version = 'no version info'
+print(str(pth) + ':', version)
 
