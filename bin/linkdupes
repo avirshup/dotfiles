@@ -6,11 +6,9 @@ import argparse
 import re
 import fileinput
 
-NO_1LINE = re.compile(r"^-.*1")
-
 
 def make_parser():
-    parser = argparse.ArgumentParser("Pipe input from fdupes to symlink duplicates")
+    parser = argparse.ArgumentParser("Pipe input from fdupes to link or symlink duplicates")
     parser.add_argument(
         "--symlink",
         help="Replace with symlinks instead of hardlinks",
