@@ -1,0 +1,57 @@
+#!/usr/bin/env python
+from __future__ import print_function
+
+import os
+import argparse
+import re
+import fileinput
+
+NO_1LINE = re.compile(r"^-.*1")
+
+
+def make_parser():
+    parser = argparse.ArgumentParser("Pipe input from fdupes to symlink duplicates")
+    parser.add_argument(
+        "--symlink",
+        help="Replace with symlinks instead of hardlinks",
+        action="store_true",
+    )
+    parser.add_argument(
+        "--dryrun",
+        action="store_true",
+        help="show what would happen without actually doing it",
+    )
+    return parser
+
+
+def run(symlink, dryrun):
+    # separate into duplicate groups
+    group = []
+    for l in fileinput.input('-'):
+        f = l.strip()
+        if f:
+            group.append(f)
+        else:
+            assert len(group) >= 2
+            print(group[0], "<-", " ".join(group[1:]))
+            if not dryrun:
+                dedupe(group[0], group[1:], symlink)
+            group = []
+
+    if dryrun:
+        print("Dry run - no duplicates were removed")
+
+
+def dedupe(source, targets, symlink):
+    for target in targets:
+        os.unlink(target)
+        if symlink:
+            os.symlink(os.path.abspath(source), target)
+        else:
+            os.link(source, target)
+
+
+if __name__ == "__main__":
+    parser = make_parser()
+    args = parser.parse_args()
+    run(args.symlink, args.dryrun)
