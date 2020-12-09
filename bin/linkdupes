@@ -8,7 +8,8 @@ import fileinput
 
 
 def make_parser():
-    parser = argparse.ArgumentParser("Pipe input from fdupes to link or symlink duplicates")
+    parser = argparse.ArgumentParser(
+        description="Pipe input from fdupes to this program to link or symlink duplicates")
     parser.add_argument(
         "--symlink",
         help="Replace with symlinks instead of hardlinks",
