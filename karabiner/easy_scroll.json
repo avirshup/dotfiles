@@ -1,0 +1,48 @@
+{
+  "title": "Better page up/down",
+  "rules": [
+    {
+      "description": "Scroll ~20 lines per page-up/down",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "page_up"
+          },
+          "to": [
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"},
+            {"key_code": "up_arrow"}
+          ]
+        }
+      ]
+    }
+  ]
+}

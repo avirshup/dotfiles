@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+usage() {
+    echo "USAGE: get-aws-ips (region) [--info]"
+}
+
+if [ -z "$1" ]; then
+    usage
+    exit 1
+fi
+
+query="Reservations[*].Instances[*].[PublicDnsName]"
+
+if [ "$#" == 2 ]; then
+    if [ "$2" != '--info' ]; then
+        usage
+        exit 1
+    else
+        query="Reservations[*].Instances[*].[InstanceId,InstanceType,State.Name,PublicDnsName]"
+    fi
+fi
+
+aws ec2 describe-instances \
+    --query "${query}" \
+    --output=text \
+    --region=us-east-2 | grep -v '^$'

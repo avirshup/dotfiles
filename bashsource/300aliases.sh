@@ -12,11 +12,12 @@ function make-alias(){
 make-alias diff colordiff
 make-alias vi vim
 
-
-alias conda2="pyenv shell miniconda-latest"
-alias conda3="pyenv shell miniconda3-latest"
+alias strip-ansi="perl -pe 's/\x1b\[[0-9;]*m//g'"
+alias tf="terraform"
 alias pyshell="pyenv shell"
 alias py.test="py.test -rEf" 
+
+alias myps="ps x | grep -v /usr/libexec | grep -v '\.app' | grep -v '/Library'"
 
 if [ "$(uname)" == "Darwin" ]; then
 	cpcb() {

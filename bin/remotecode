@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+HOST_VSCODE_CMD='/usr/local/bin/code'
+
+if [ -z "$SSH_CLIENT" ]; then
+    echo "Couldn't find SSH_CLIENT environment variable. Are you on an ssh connection?"
+    exit 1
+fi
+
+if [ -z "$HOSTNAME" ]; then
+    echo "Hostname not set???"
+    exit 1
+fi
+
+showhelp() {
+    echo "USAGE: remotecode [--help] PATH"
+}
+
+if [ $# != 1 ]; then
+    showhelp
+    exit 1
+fi
+
+if [ "$1" == "--help" ]; then
+    showhelp
+    exit 0
+fi
+
+# get path
+target_path=$(realpath $1)
+resultcode=$?
+if [ $resultcode != 0 ]; then
+    exit $resultcode
+fi
+if [ ! -e "$target_path" ]; then
+    echo "ERROR - '$target_path' does not exist"
+    exit 2
+fi
+
+# get ssh params
+ssh_array=($SSH_CLIENT)
+ssh_host=${ssh_array[0]}
+client_name=$HOSTNAME
+
+if [ -d "$target_path" ]; then
+    flag='--folder-uri'
+else
+    flag='--file-uri'
+fi
+
+# assemble ssh command and run it
+cmd="ssh ${ssh_host} $HOST_VSCODE_CMD $flag vscode-remote://ssh-remote%2B${client_name}/${target_path}"
+echo "> $cmd"
+$cmd

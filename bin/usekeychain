@@ -1,0 +1,8 @@
+#!/usr/bin/env bash -e
+
+# use keychain functionality even over an ssh connection
+# see https://superuser.com/a/363840/778483 
+
+eval `ssh-agent -s`
+
+security unlock-keychain ~/Library/Keychains/login.keychain

@@ -1,0 +1,150 @@
+{
+    "title": "Space cadet-inspired",
+    "rules": [
+        {
+            "description": "left/right shift strike -> (/)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "left_shift",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "9",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "left_shift",
+                            "modifiers": []
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "right_shift",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "0",
+                            "modifiers": [
+                                "right_shift"
+                            ]
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "right_shift",
+                            "modifiers": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "escape hold down = option (for use with remapped capslock)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "escape",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "left_alt"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "left/right cmd strike -> undo/redo",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "left_gui",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "z",
+                            "modifiers": ["command"]
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "left_gui"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "right_gui",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "z",
+                            "modifiers": ["command", "shift"]
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "right_gui"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -2,10 +2,18 @@
 prepend-pathvar PATH $HOME/bin
 prepend-pathvar PATH $HOME/.local/bin
 
+# completion
+if command -v brew; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    fi
+fi
+
 export HISTSIZE=5000
 export HISTFILESIZE=5000
 export HISTCONTROL="$HISTCONTROL:ignoredups"
 export HISTIGNORE="ls:ls -l:top"
+
 
 # nodenv
 export NODENV_ROOT="$HOME/.nodenv"
@@ -30,7 +38,7 @@ fi
 
 # bashmarks
 source ~/.local/bin/bashmarks.sh
-append-pathvar MANPATH /usr/man:/usr/local/man
+append-pathvar MANPATH /usr/share/man:/usr/local/share/man
 export EDITOR=vi
 export SVN_EDITOR=vi
 
