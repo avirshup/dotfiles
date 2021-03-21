@@ -1,0 +1,5 @@
+# https://wiki.python.org/moin/PdbRcIdea
+
+import os as _os
+_pdbrc_script = open(_os.path.expanduser("~/.pdb.d/pdbrc.py")).read()
+exec(_pdbrc_script)
