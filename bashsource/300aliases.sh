@@ -23,6 +23,10 @@ if [ "$(uname)" == "Darwin" ]; then
 	cpcb() {
 		echo -n "$($@)" | pbcopy
 	}
+
+	ql() {
+		qlmanage -p "$@" &> /dev/null
+	}
 fi
 
 
@@ -36,3 +40,17 @@ function pyscf-activate(){
 	fi
 }
 
+alias sctl=supervisorctl
+
+
+function tempdir(){
+	name="$1"
+	if [ -z "$name" ]; then
+		echo "please provide a name."
+		return 1
+	fi
+	d="$HOME/tmp/$name"
+	mkdir -p "$d"
+	echo $d
+	cd "$d"
+}

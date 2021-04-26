@@ -17,6 +17,19 @@ barf=100
 declare -A numcolors=([0]=$green [1]=$orange [2]=$red [3]=$blue [4]=$purple [5]=$taupe [6]=$forest [7]=$crimson [8]=$mauve [9]=$barf)
 
 
+# virtual envs sometimes have a VERY slow tput. So try to use a system level one
+# if at all possible
+_USE_TPUT=tput # the default
+for tputpath in /usr/bin/tput /usr/local/bin/tput; do
+    if [ -x $tputpath ]; then
+        export _USE_TPUT=$tputpath
+        break
+    fi
+done
+unset tputpath
+
+
+
 function get_dir(){
     thisdircolor='75'
     if [[ "${PWD}" == "${HOME}" ]]; then
@@ -47,17 +60,19 @@ function get_pyenv(){
     fi
 }
 
+
+
 function colortext(){
-    echo "\[$(tput setaf $2)\]$1\[$(tput sgr0)\]"
+    echo "\[$($_USE_TPUT setaf $2)\]$1\[$($_USE_TPUT sgr0)\]"
 }
 
 
 show_tput_colors(){
     for C in {0..255}; do
-    tput setab $C
+    $_USE_TPUT setab $C
     echo -n "$C "
     done
-    tput sgr0
+    $_USE_TPUT sgr0
     echo
 }
 
