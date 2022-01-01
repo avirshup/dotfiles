@@ -1,9 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 up(){
     if [ -z "$1" ]; then
         _show_updirs
-        read -p "Which? " n
+        echo -n "Which? "
+        read n
     else
         n=$1
     fi
@@ -31,7 +32,7 @@ _show_updirs() {
     for i in $(seq 0 20); do
         shortname=$(basename "$d")
         printf "%3s) %-20s -> %s\n" $i "$shortname" "$d"
-        if [ "$d" == "/" ]; then
+        if [[ "$d" = '/' ]]; then
             break
         else
             d=$(dirname "$d")

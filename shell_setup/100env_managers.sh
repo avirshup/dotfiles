@@ -1,18 +1,18 @@
-# me
-prepend-pathvar PATH $HOME/bin
-prepend-pathvar PATH $HOME/.local/bin
-
 # completion
-if command -v brew &> /dev/null; then
-    if [ -f $(brew --prefix)/etc/bash_completion ]; then
-        . $(brew --prefix)/etc/bash_completion
+if [[ "$CURRENT_SHELL" = "-bash" ]]; then
+    if command -v brew &> /dev/null; then
+        if [ -f $(brew --prefix)/etc/bash_completion ]; then
+            . $(brew --prefix)/etc/bash_completion
+        fi
+    fi
+elif [[ "$CURRENT_SHELL" = "-zsh" ]]; then
+    if type brew &>/dev/null; then
+        FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+        autoload -Uz compinit
+        compinit
     fi
 fi
 
-export HISTSIZE=5000
-export HISTFILESIZE=5000
-export HISTCONTROL="$HISTCONTROL:ignoredups"
-export HISTIGNORE="ls:ls -l:top"
 
 
 # # nodenv
@@ -38,12 +38,14 @@ else
 fi
 
 
-# bashmarks
+# bashmarks (works with zsh too)
 source ~/.local/bin/bashmarks.sh
+
+
+
 append-pathvar MANPATH /usr/share/man:/usr/local/share/man
 export EDITOR=vi
 export SVN_EDITOR=vi
-
 
 # optional prefixes
 for pfx in /usr/local/cuda /opt/vulkan; do

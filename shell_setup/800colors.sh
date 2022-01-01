@@ -1,7 +1,7 @@
 #always output human-readable sizes
 alias df='df -h'
 
-if [ "$(uname)" != 'Darwin' ]; then
+if [[ "$(uname)" -ne 'Darwin' ]]; then
     alias ls='ls -h --color=auto'
     export GREP_OPTIONS='--color=auto'
 
@@ -19,24 +19,6 @@ alias units='units -v'
 alias grep='grep --color=auto'
 alias tree='tree -C'
 
-psgrep() {
-    ps aux -NC grep | grep $@
-}
-
-if [ "$(uname)" == "Darwin" ]; then 
-   alias top='top -o cpu'
-fi
-stty erase ^H
-
 alias ccat='pygmentize -f terminal'
-export LSCOLORS="ExFxBxDxCxEgEdxbxgxcEd"
+# export LSCOLORS="ExFxBxDxCxEgEdxbxgxcEd"
 
-exportenv () {
-    # FROM https://stackoverflow.com/a/20909045/1958900
-    if [ $# != 1 ] ; then
-        echo 'USAGE: exportenv [env file]'
-        return 1
-    fi
-
-    export $(cat $1 | grep -v '^#' | xargs)
-}

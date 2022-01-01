@@ -1,12 +1,27 @@
 #!/bin/bash
 # note: $DOTFILE_HOME must already be set
 
+export CURRENT_SHELL=$(sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p)
+
+_extensions="sh"
+case "${CURRENT_SHELL}" in 
+  "-bash")
+  _extensions="$_extensions bash"
+  ;;
+  "-zsh")
+  _extensions="$_extensions zsh"
+  ;;
+esac
+
 export PATH=${DOTFILE_HOME}/bin:${PATH}
 echo "Loading: "
-for file in ${DOTFILE_HOME}/bashsource/*.sh; do
-  printf " $(basename $file) ..."
-  source $file
-  echo ✅
+# "echo" hack for zsh/bash compatibility
+for _ext in $(echo $_extensions); do
+  for _f in ${DOTFILE_HOME}/shell_setup/*.${_ext}; do
+    printf " $(basename $_f) ..."
+    source $_f
+    echo ✅
+  done
 done
 echo ' done'
 
