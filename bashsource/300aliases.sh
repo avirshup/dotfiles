@@ -27,6 +27,12 @@ if [ "$(uname)" == "Darwin" ]; then
 	ql() {
 		qlmanage -p "$@" &>/dev/null
 	}
+
+	# https://apple.stackexchange.com/a/5461/64253
+	cman () {
+    	man "${1}" | col -b | code -n -
+	}
+
 fi
 
 function _click_autocomplete() {

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cmd=""
+for colnum in "$@"; do
+    if [ -z "$cmd" ]; then
+        cmd="\$$colnum"
+    else
+        
+        cmd="\$$colnum, $cmd"
+    fi
+done
+awk "{print $cmd}"
