@@ -8,7 +8,7 @@ function import(){
 
 
 function from(){
-        cmd="from $@"
+    cmd="from $@"
     ipython -i -c "${cmd}"
 }
 

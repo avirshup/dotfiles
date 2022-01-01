@@ -55,3 +55,8 @@ add-to-file "${HOME}/.vimrc" ":source ${DIR}/etc/vimrc" '"'
 
 # SLATERC
 add-to-file "${HOME}/.slate" "source ${DIR}/etc/default.slate"
+
+# PDBRC
+add-to-file "${HOME}/.pdbrc" "source ${DIR}/etc/pdbrc"
+mkdir -p ~/.pdb.d
+add-to-file "${HOME}/.pdb.d/pdbrc.py" "source ${DIR}/etc/pdbrc.py"
