@@ -43,7 +43,12 @@ export EDITOR=vi
 export SVN_EDITOR=vi
 
 
-# CUDA
-append-pathvar PATH /Developer/NVIDIA/CUDA-9.0/bin
-append-pathvar DYLD_LIBRARY_PATH \
-    /Developer/NVIDIA/CUDA-8.0/lib:/Developer/NVIDIA/CUDA-9.0/lib
+# optional prefixes
+for pfx in /usr/local/cuda /opt/vulkan; do
+    if [ -d "$pfx/bin" ]; then
+        append-pathvar PATH "$pfx/bin"
+    fi
+    if [ -d "$pfx/lib" ]; then
+        append-pathvar DYLD_LIBRARY_PATH "$pfx/lib" 
+    fi
+done
