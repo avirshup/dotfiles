@@ -1,37 +1,37 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # adapted from https://superuser.com/a/316376/778483
-DEFAULT_THEME="AltSolarized"
-REMOTE_THEME="zenburn"
+REMOTE_THEME="BirdsOfParadise"
 
-hostspec=$2
-host=$(echo $hostspec | sed -e 's/^.*@//' -e 's/\..*$//')
+set -e
 
- 
-window_name="${host}_SSH_$$"
- 
-trap cleanup 1 2 3 6
- 
-function cleanup() {
-    set_theme "$DEFAULT_THEME"
-    echo -ne "\033]0;\007"
-}
- 
-function set_theme() {
-    case "$TERM_PROGRAM" in
-    Apple_Terminal)
-        echo -ne "\033]0;${window_name}\007"
-        osascript -e 'tell application "Terminal" to set current settings of (first window whose name contains "'${window_name}'") to settings set "'${1}'"' 2>/dev/null
-        if [ $? != 0 ]; then
-                osascript -e 'tell application "Terminal" to set current settings of first window to settings set "'${1}'"'
-        fi
-        ;;
-    iTerm.app)
-        osascript -e 'tell application "iTerm" to set background color of (current session of current terminal) to {'"$1"'}'
-        ;;
-    esac
+
+function window_selector() {
+    window_id=$(osascript -e 'tell application "Terminal" to return id of window 1')
+    echo "(window id ${window_id})"
 }
 
- 
-set_theme $REMOTE_THEME
-$@
-cleanup
+function get_theme() {
+    osascript -e 'tell application "Terminal" to return name of current settings of '"$1"
+}
+
+function set_theme {
+    osascript -e 'tell application "Terminal" to set current settings of '"${1}"' to settings set "'"$2\""
+}
+
+
+function main() {
+    window_id=$(window_selector)
+    old_theme=$(get_theme "$window_id")
+
+    function cleanup() {
+        set_theme "$window_id" "$old_theme"
+        echo -ne "\033]0;\007"
+    }
+    trap cleanup 1 2 3 6
+
+    set_theme "$window_id" "$REMOTE_THEME"
+    $@
+    cleanup
+}
+
+main $@
