@@ -63,7 +63,7 @@
             ]
         },
         {
-            "description": "escape hold down = option (for use with remapped capslock)",
+            "description": "ctrl strike -> escape",
             "manipulators": [
                 {
                     "type": "basic",
@@ -71,7 +71,7 @@
                         "basic.to_if_alone_timeout_milliseconds": 140
                     },
                     "from": {
-                        "key_code": "escape",
+                        "key_code": "left_control",
                         "modifiers": {
                             "optional": [
                                 "any"
@@ -85,7 +85,96 @@
                     ],
                     "to": [
                         {
+                            "key_code": "left_control"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "left alt strike -> single quote",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "left_alt",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "quote"
+                        }
+                    ],
+                    "to": [
+                        {
                             "key_code": "left_alt"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "description": "right alt strike -> double quote",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "right_alt",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "quote",
+                            "modifiers": "left_shift"
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "right_alt"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "ctrl strike -> escape",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "left_control",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "left_control"
                         }
                     ]
                 }

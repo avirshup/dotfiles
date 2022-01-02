@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+# https://unix.stackexchange.com/questions/6097/can-i-spawn-a-new-terminal-that-is-a-clone-of-the-current-terminal
+
+TERMDUMP=/tmp/termdump.$RANDOM.sh
+
+declare +x | grep -Ev '^(BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID)' > $TERMDUMP
+declare -x >> $TERMDUMP
+# echo "cd $(pwd)" >> $TERMDUMP
+ttab -g source $TERMDUMP

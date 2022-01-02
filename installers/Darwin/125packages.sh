@@ -1,5 +1,6 @@
 #!/bin/bash
 
+xcode-select --install
 
 brew cask install xquartz
 
@@ -15,7 +16,8 @@ for pkg in \
     jq \
     dbus \
     bash-completion \
-    the_silver_searcher; do
+    the_silver_searcher \
+    trash; do
 
 	echocmd brew install $pkg
 	

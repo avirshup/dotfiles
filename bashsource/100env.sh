@@ -15,20 +15,11 @@ export HISTCONTROL="$HISTCONTROL:ignoredups"
 export HISTIGNORE="ls:ls -l:top"
 
 
-# # nodenv
-# export NODENV_ROOT="$HOME/.nodenv"
-# if [ -f ${NODENV_ROOT}/bin/nodenv ]; then
-#    prepend-pathvar PATH ${NODENV_ROOT}/bin
-#    eval "$(nodenv init -)"
-# else
-# 	echo "nodenv not installed"
-# fi
-
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if [ -f ${PYENV_ROOT}/bin/pyenv ]; then
+   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
    prepend-pathvar PATH ${PYENV_ROOT}/bin
    eval "$(pyenv init --path)"
    eval "$(pyenv virtualenv-init -)"
@@ -36,7 +27,6 @@ if [ -f ${PYENV_ROOT}/bin/pyenv ]; then
 else
   echo "pyenv not installed"
 fi
-
 
 # bashmarks
 source ~/.local/bin/bashmarks.sh
