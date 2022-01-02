@@ -7,4 +7,6 @@ echo "Installing BitStream Vera Sans"
 cd /tmp
 wget http://ftp.gnome.org/pub/GNOME/sources/ttf-bitstream-vera/1.10/ttf-bitstream-vera-1.10.tar.gz
 tar xvzf ttf-bitstream-vera-1.10.tar.gz
-mv ttf-bitstream-vera-1.10/*.ttf $HOME/Library/Fonts
+mv ttf-bitstream-vera-1.10/*.ttf "$HOME/Library/Fonts"
+
+mv "${DOTFILE_HOME}/fonts/*.ttf" "$HOME/Library/Fonts"

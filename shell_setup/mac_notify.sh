@@ -13,7 +13,7 @@ function sadmoji(){
 function notify(){
    $@
    exitcode=$?
-   if [ "${exitcode}" -ne 0 ]; then
+   if [[ "${exitcode}" -ne 0 ]]; then
       success="$(sadmoji) exit code: ${exitcode} $(sadmoji) $(sadmoji) $(sadmoji)"
    else
       success="$(happymoji) Success $(happymoji) $(happymoji) $(happymoji)"

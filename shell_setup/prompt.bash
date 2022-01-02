@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ "$CURRENT_PROMPT" -ne "-bash" ]]; then
+    return 0
+fi
+
+
 # this is an "associative array" (a dict more or less)
 orange=208
 green=22
