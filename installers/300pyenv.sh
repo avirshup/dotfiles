@@ -12,7 +12,8 @@ echocmd git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins
 git clone https://github.com/pyenv/pyenv-which-ext.git ~/.pyenv/plugins/pyenv-which-ext
 echo "Installed pyenv to ~/.pyenv"
 
-
 echo installing miniconda environment ...
 echocmd pyenv install miniconda3-latest
 echocmd pyenv global miniconda3-latest
+echocmd conda upgrade conda
+echocmd conda upgrade -n base python

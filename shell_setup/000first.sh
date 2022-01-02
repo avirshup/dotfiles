@@ -1,7 +1,7 @@
 prepend-pathvar() {
     varname=$1
     new=$2
-    eval current=\$$varname  # gets current value as through indirect ref
+    eval current=\$$varname # gets current value as through indirect ref
     current=${new}${current:+:${current}}
     eval "$varname=$current"
     export ${varname}
@@ -10,10 +10,15 @@ prepend-pathvar() {
 append-pathvar() {
     varname=$1
     new=$2
-    eval current=\$$varname 
+    eval current=\$$varname
     current=${current:+${current}:}${new}
     eval "$varname=$current"
     export ${varname}
+}
+
+function echocmd() {
+    echo "> $@"
+    $@
 }
 
 stty erase ^H

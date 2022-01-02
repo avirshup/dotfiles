@@ -8,14 +8,15 @@ if command -v nvm; then
 fi
 
 cd /tmp
-wget \
+echocmd wget \
   https://raw.githubusercontent.com/nvm-sh/nvm/4856407d2691d2135420f25d00acdb6d9b85ae3d/install.sh \
   -O install-nvm.sh
 
 fhash=$(md5 -q install-nvm.sh)
 
 [ $"fhash" == 6eed9840d2e814d2e4c9e1c91c2f3b81 ] || (
-  echo "ERROR INSTALLING NVM: installer hash check failed"; exit 1
+  echo "ERROR INSTALLING NVM: installer hash check failed"
+  exit 1
 )
 
-bash install-nvm.sh
+echocmd bash install-nvm.sh
