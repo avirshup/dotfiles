@@ -28,7 +28,8 @@
     dir                     # current directory
     pyenv                   # python environment (https://github.com/pyenv/pyenv)
     vcs                     # git status
-    spacer
+    jobjobs         # presence of background jobs
+    # spacer
 
     # =========================[ Line #2 ]=========================
     newline                 # \n
@@ -46,7 +47,6 @@
     status                  # exit code of the last command
 
     command_execution_time  # duration of the last command
-    background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
     asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
     # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
@@ -265,10 +265,17 @@
   ####################################[ python_version ]####################################
   # SUUUPER SLOW god fucking damnit python
   # function prompt_python_version() {
+  #   pyver=$(python --version)
   #   p10k segment -b 0 -f 0 -i 🐍 -t "$(python --version)"
   # }
+
   function prompt_python_version() {
-    p10k segment -b 0 -f 0 -i 🐍 -t "$(basename $(readlink $(pyenv which python)))"
+    # faster, but depends on executable being named "pythonMAJOR.MINOR".
+    # doesn't work for pypy.
+    # still not that fast ... 80 ms, due to `pyenv which`
+    # need to just automagically cache this
+    pyexe=$(readlink $(pyenv which python))
+    p10k segment -b 0 -f 0 -i 🐍 -t "${pyexe##*(python|/)}"
   }
   typeset -g POWERLEVEL9K_PYTHON_VERSION_FOREGROUND=254
   typeset -g POWERLEVEL9K_PYTHON_VERSION_BACKGROUND=29
@@ -283,6 +290,25 @@
   typeset -g POWERLEVEL9K_PYENV_SHOW_SYSTEM=true
   typeset -g POWERLEVEL9K_PYENV_CONTENT_EXPANSION='${P9K_CONTENT}'
 
+################[ jobjobs: always-on background job segment ]################
+prompt_jobjobs() {
+  njobs=${(%):-%j}
+  case "$njobs" in
+    "0")
+    msg=" "
+    icon=""
+    ;;
+    "1")
+    msg=""
+    icon=""
+    ;;
+    *)
+    msg="$njobs"
+    icon=""
+    ;;
+  esac
+  p10k segment -f cyan -i "$icon" -t "$msg"
+}
 
 
 ############################################################################################################
