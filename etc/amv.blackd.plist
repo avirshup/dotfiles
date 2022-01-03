@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+
+    <key>Label</key>
+    <string>amv.blackd</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <false/>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/blackd</string>
+        <string>--bind-host=127.0.0.1</string>
+        <string>--bind-port=45484</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/tmp/</string>
+
+  </dict>
+</plist>

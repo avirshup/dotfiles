@@ -1,6 +1,6 @@
 # completion
 if [[ "$CURRENT_SHELL" = "-bash" ]]; then
-    if command -v brew &> /dev/null; then
+    if command -v brew &>/dev/null; then
         if [ -f $(brew --prefix)/etc/bash_completion ]; then
             . $(brew --prefix)/etc/bash_completion
         fi
@@ -13,8 +13,6 @@ elif [[ "$CURRENT_SHELL" = "-zsh" ]]; then
     fi
 fi
 
-
-
 # # nodenv
 # export NODENV_ROOT="$HOME/.nodenv"
 # if [ -f ${NODENV_ROOT}/bin/nodenv ]; then
@@ -24,24 +22,21 @@ fi
 # 	echo "nodenv not installed"
 # fi
 
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if [ -f ${PYENV_ROOT}/bin/pyenv ]; then
-   prepend-pathvar PATH ${PYENV_ROOT}/bin
-   eval "$(pyenv init --path)"
-   eval "$(pyenv virtualenv-init -)"
-   eval "$(pyenv init -)"
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+    prepend-pathvar PATH ${PYENV_ROOT}/bin
+    eval "$(pyenv init --path)"
+    eval "$(pyenv virtualenv-init -)"
+    eval "$(pyenv init -)"
 else
-  echo "pyenv not installed"
+    echo "pyenv not installed"
 fi
-
 
 # bashmarks (works with zsh too)
 source ~/.local/bin/bashmarks.sh
-
-
 
 append-pathvar MANPATH /usr/share/man:/usr/local/share/man
 export EDITOR=vi
@@ -53,6 +48,6 @@ for pfx in /usr/local/cuda /opt/vulkan; do
         append-pathvar PATH "$pfx/bin"
     fi
     if [ -d "$pfx/lib" ]; then
-        append-pathvar DYLD_LIBRARY_PATH "$pfx/lib" 
+        append-pathvar DYLD_LIBRARY_PATH "$pfx/lib"
     fi
 done

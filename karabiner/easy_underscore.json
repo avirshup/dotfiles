@@ -1,5 +1,5 @@
 {
-  "title": "international symbol -> underscore",
+  "title": "underscores without shift",
   "rules": [
     {
       "description": "international symbol -> underscore",
@@ -28,6 +28,44 @@
               "optional": [
                 "caps_lock"
               ],
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "description": "hypen/underscore -> underscore/hyphen",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "hyphen",
+            "modifiers": {
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "hyphen",
+            "modifiers": {
               "mandatory": [
                 "shift"
               ]

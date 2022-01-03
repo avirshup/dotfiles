@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+
+startswith() {
+    [ "${1:0:1}" == "$2" ]
+}
+
+
+if [ "$#" -ne 3 ]; then
+    echo "usage: cp-from-image [image] [image-path] [host-path]"
+    echo "  Only works on directories."
+    exit 1
+fi
+
+img=$1
+src=$2
+dest=$3
+
+if ! startswith "${src}" "/"; then
+    echo "Sourch path must be absolute"
+    exit 1
+fi
+
+# https://stackoverflow.com/a/32728866/1958900
+deststart="${dest:0:1}"
+if ! startswith "$dest" "/" && ! startswith "$dest" "~"; then
+    dest="$(pwd)/${dest}"
+fi
+
+echo "$img:/$src -> $dest"
+mkdir -p "$dest"
+
+docker run --rm --entrypoint=tar --workdir="${src}" "${img}" \
+    cf - -C "${src}" . | \
+    tar xvf - -C "${dest}"

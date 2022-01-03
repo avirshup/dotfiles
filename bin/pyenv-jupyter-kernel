@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+version=$(pyenv version-name)
+if [ -z "${version}" ] ; then
+    echo pyenv version not found
+    exit 1
+fi
+
+python -m ipykernel install --user --name "$version" --display-name="$(python --version) (${version})" 

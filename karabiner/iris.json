@@ -1,0 +1,177 @@
+{
+    "title": "Iris keeb thumb strike actions",
+    "rules": [
+        {
+            "description": "IRIS/rev4: right cmd strike -> return",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "right_gui",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "return_or_enter"
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "right_gui",
+                            "modifiers": []
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 51984,
+                                    "product_id": 16982,
+                                    "description": "iris rev4"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "IRIS/rev4: left cmd strike -> underscore",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "left_gui",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "hyphen",
+                            "modifiers": ["left_shift"]
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "left_gui",
+                            "modifiers": []
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 51984,
+                                    "product_id": 16982,
+                                    "description": "iris rev4"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "IRIS/rev4: left alt strike -> undo",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "left_alt",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "z",
+                            "modifiers": [
+                                "right_gui"
+                            ]
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "left_alt",
+                            "modifiers": []
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 51984,
+                                    "product_id": 16982,
+                                    "description": "iris rev4"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "IRIS/rev4: right alt strike -> hyphen",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 140
+                    },
+                    "from": {
+                        "key_code": "right_alt",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "hyphen"
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "right_alt",
+                            "modifiers": []
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 51984,
+                                    "product_id": 16982,
+                                    "description": "iris rev4"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

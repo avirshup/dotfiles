@@ -1,0 +1,130 @@
+{
+    "title": "hyper commands (both cmd keys -> ctrl cmd shift)",
+    "rules": [
+        {            
+            "description": "hyper - must be FIRST in MOD lists",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "left_gui",
+                        "modifiers": {
+                            "mandatory": ["right_gui"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_shift",
+                            "modifiers": [
+                                "right_command",
+                                "left_control"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "from": {
+                        "key_code": "right_gui",
+                        "modifiers": {
+                            "mandatory": ["left_gui"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_shift",
+                            "modifiers": [
+                                "right_command",
+                                "left_control"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "hyper-t -> Terminal.app",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "t",
+                        "modifiers": {
+                            "mandatory": ["command","control","shift"]}
+                    },
+                    "to": [{"shell_command": "open -a 'Terminal.app'"}]
+                }
+            ]
+        },
+        {
+            "description": "hyper-p -> pycharm",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "p",
+                        "modifiers": {
+                            "mandatory": ["command","control","shift"]}
+                    },
+                    "to": [{"shell_command": "open -b com.jetbrains.pycharm"}]
+                }
+            ]
+        },
+        {
+            "description": "hyper-f -> firefox",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f",
+                        "modifiers": {
+                            "mandatory": ["command","control","shift"]}
+                    },
+                    "to": [{"shell_command": "open -a Firefox.app"}]
+                }
+            ]
+        },
+        {
+            "description": "hyper-c -> teams",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "c",
+                        "modifiers": {
+                            "mandatory": ["command","control","shift"]}
+                    },
+                    "to": [{"shell_command": "open -a 'Microsoft Teams.app'"}]
+                }
+            ]
+        },
+        {
+            "description": "hyper-v -> vscode",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "v",
+                        "modifiers": {
+                            "mandatory": ["command","control","shift"]}
+                    },
+                    "to": [{"shell_command": "open -a 'Visual Studio Code.app'"}]
+                }
+            ]
+        },
+        {
+            "description": "hyper-e -> mail.app",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "e",
+                        "modifiers": {
+                            "mandatory": ["command","control","shift"]}
+                    },
+                    "to": [{"shell_command": "open -a Mail.app"}]
+                }
+            ]
+        }
+    ]
+}

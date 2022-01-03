@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /tmp
-git clone git://github.com/huyng/bashmarks.git
+echocmd git clone git://github.com/huyng/bashmarks.git
 cd bashmarks
-make install
+echocmd make install
 echo "Installed bashmarks"

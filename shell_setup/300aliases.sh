@@ -33,18 +33,16 @@ if [[ "$(uname)" = "Darwin" ]]; then
 	}
 
 	# https://apple.stackexchange.com/a/5461/64253
-	cman () {
-    	man "${1}" | col -b | code -n -
+	cman() {
+		man "${1}" | col -b | code -n -
 	}
 
 fi
 
-
-function grep-repo(){
-    git grep $@ $(git rev-list --all)
+function grep-repo() {
+	git grep $@ $(git rev-list --all)
 }
 
-
 psgrep() {
-    ps aux -NC grep | grep $@
+	ps aux -NC grep | grep $@
 }
