@@ -13,14 +13,10 @@ elif [[ "$CURRENT_SHELL" = "-zsh" ]]; then
     fi
 fi
 
-# # nodenv
-# export NODENV_ROOT="$HOME/.nodenv"
-# if [ -f ${NODENV_ROOT}/bin/nodenv ]; then
-#    prepend-pathvar PATH ${NODENV_ROOT}/bin
-#    eval "$(nodenv init -)"
-# else
-# 	echo "nodenv not installed"
-# fi
+# This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
