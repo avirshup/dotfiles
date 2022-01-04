@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$CURRENT_PROMPT" -ne "-bash" ]]; then
+if [[ "$CURRENT_SHELL" -ne "bash" ]]; then
     return 0
 fi
 

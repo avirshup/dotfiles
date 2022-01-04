@@ -1,14 +1,15 @@
 #!/bin/bash
 # note: $DOTFILE_HOME must already be set
 
-export CURRENT_SHELL=$(sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p)
+_current_shell=$(sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p)
+export CURRENT_SHELL=${_current_shell#-}
 
 _extensions="sh"
 case "${CURRENT_SHELL}" in 
-  "-bash")
+  "bash")
   _extensions="$_extensions bash"
   ;;
-  "-zsh")
+  "zsh")
   _extensions="$_extensions zsh"
   ;;
 esac
@@ -24,7 +25,3 @@ for _ext in $(echo $_extensions); do
   done
 done
 echo ' done'
-
-
-
-
