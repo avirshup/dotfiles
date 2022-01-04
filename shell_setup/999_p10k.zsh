@@ -21,10 +21,10 @@
   # The list of segments shown on the left. Fill it with the most important segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    os_icon                 # os identifier
+    machine_id              # os identifier
     goenv                   # go environment (https://github.com/syndbg/goenv)
     # nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
-    nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
+    # nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
     dir                     # current directory
     pyenv                   # python environment (https://github.com/pyenv/pyenv)
     vcs                     # git status
@@ -33,7 +33,8 @@
 
     # =========================[ Line #2 ]=========================
     newline                 # \n
-    prompt_char             # prompt symbol
+    os_icon
+    # spacer             # prompt symbol
   )
 
   # The list of segments shown on the right. Fill it with less important segments.
@@ -148,7 +149,7 @@
   #################################[ os_icon: os identifier ]##################################
   # OS identifier color.
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=232
-  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=7
+  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=255
   # Custom icon.
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
 
@@ -279,6 +280,13 @@
   }
   typeset -g POWERLEVEL9K_PYTHON_VERSION_FOREGROUND=254
   typeset -g POWERLEVEL9K_PYTHON_VERSION_BACKGROUND=29
+
+
+  #################################[ machine_id ]##################################
+  function prompt_machine_id() {
+    p10k segment -b 234 -f 232 -i "$P10K_MACHINE_ID"
+  }
+
   
 
   ################[ pyenv: python environment (https://github.com/pyenv/pyenv) ]################

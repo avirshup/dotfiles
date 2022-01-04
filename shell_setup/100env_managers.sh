@@ -5,6 +5,14 @@ if [[ "$CURRENT_SHELL" = "-bash" ]]; then
             . $(brew --prefix)/etc/bash_completion
         fi
     fi
+
+    # This loads nvm (for bash, anyway. For ZSH, use the zsh-nvm plugin)
+    export NVM_DIR="$HOME/.nvm"
+    if [[ -d "$NVM_DIR" ]]; then
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    fi
+
 elif [[ "$CURRENT_SHELL" = "-zsh" ]]; then
     if type brew &>/dev/null; then
         FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -12,11 +20,6 @@ elif [[ "$CURRENT_SHELL" = "-zsh" ]]; then
         compinit
     fi
 fi
-
-# This loads nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"

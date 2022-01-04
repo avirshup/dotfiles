@@ -1,5 +1,4 @@
 export ZSH="$HOME/.oh-my-zsh"
-_PL="$(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" 
 
 if [ ! -d "${ZSH}" ]; then
   echo "oh-my-zsh not found, skipping"
@@ -73,11 +72,14 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  emoji-clock 
+  emoji-clock
+  zsh-nvm
   colored-man-pages
   zsh-autosuggestions
   rust
   rsync
 )
+
+export NVM_LAZY_LOAD=true
 
 source $ZSH/oh-my-zsh.sh
