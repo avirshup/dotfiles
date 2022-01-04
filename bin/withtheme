@@ -4,7 +4,6 @@ REMOTE_THEME="BirdsOfParadise"
 
 set -e
 
-
 function window_selector() {
     window_id=$(osascript -e 'tell application "Terminal" to return id of window 1')
     echo "(window id ${window_id})"
@@ -18,20 +17,21 @@ function set_theme {
     osascript -e 'tell application "Terminal" to set current settings of '"${1}"' to settings set "'"$2\""
 }
 
-
 function main() {
-    window_id=$(window_selector)
-    old_theme=$(get_theme "$window_id")
-
-    function cleanup() {
-        set_theme "$window_id" "$old_theme"
-        echo -ne "\033]0;\007"
-    }
-    trap cleanup 1 2 3 6
-
     set_theme "$window_id" "$REMOTE_THEME"
+    trap cleanup 0
+
+    set +e
     $@
     cleanup
 }
+
+function cleanup() {
+    set_theme "$window_id" "$old_theme"
+    echo -ne "\033]0;\007"
+}
+
+export window_id=$(window_selector)
+export old_theme=$(get_theme "$window_id")
 
 main $@
