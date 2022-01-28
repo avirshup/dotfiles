@@ -1,7 +1,7 @@
 #always output human-readable sizes
 alias df='df -h'
 
-if [[ "$(uname)" -ne 'Darwin' ]]; then
+if [ "$(uname)" != "Darwin" ]; then
     alias ls='ls -h --color=auto'
     export GREP_OPTIONS='--color=auto'
 

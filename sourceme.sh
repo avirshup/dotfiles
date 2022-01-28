@@ -4,11 +4,12 @@
 export CURRENT_SHELL=$(sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p)
 
 _extensions="sh"
-case "${CURRENT_SHELL}" in 
-  "-bash")
+echo ${CURRENT_SHELL}
+case "${CURRENT_SHELL#-}" in 
+  "bash")
   _extensions="$_extensions bash"
   ;;
-  "-zsh")
+  "zsh")
   _extensions="$_extensions zsh"
   ;;
 esac
