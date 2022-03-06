@@ -1,5 +1,5 @@
 # completion
-if [[ "$CURRENT_SHELL" = "-bash" ]]; then
+if [[ "$CURRENT_SHELL" = "bash" ]]; then
     if command -v brew &>/dev/null; then
         if [ -f $(brew --prefix)/etc/bash_completion ]; then
             . $(brew --prefix)/etc/bash_completion
@@ -13,7 +13,7 @@ if [[ "$CURRENT_SHELL" = "-bash" ]]; then
         [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
     fi
 
-elif [[ "$CURRENT_SHELL" = "-zsh" ]]; then
+elif [[ "$CURRENT_SHELL" = "zsh" ]]; then
     if type brew &>/dev/null; then
         FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
         autoload -Uz compinit

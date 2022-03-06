@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 PREFIX="/tmp/termql/"
 mkdir -p "$PREFIX"
-target="$PREFIX/$*"
+target="$PREFIX/$*".txt
 "$@" >"$target"
 
-qlmanage -p "$target" 2>/dev/null
+# qlmanage -p "$target" 2>/dev/null
+code "$target"
