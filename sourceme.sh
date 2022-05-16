@@ -13,7 +13,7 @@ fi
 export CURRENT_SHELL 
 
 _extensions="sh"
-case "${CURRENT_SHELL}" in 
+case "${CURRENT_SHELL#-}" in
   "bash")
   _extensions="$_extensions bash"
   ;;

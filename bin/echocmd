@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This is a fallback to the echocmd() function in the shell setup, so
+# scripts can use it too even outside of the shell env.
+
+echo "> $@"
+"$@"
