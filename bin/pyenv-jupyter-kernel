@@ -2,10 +2,25 @@
 
 set -e
 
+function confirm() {
+    echo "$1"
+}
+
 version=$(pyenv version-name)
-if [ -z "${version}" ] ; then
+if [ -z "${version}" ]; then
     echo pyenv version not found
     exit 1
 fi
 
-python -m ipykernel install --user --name "$version" --display-name="$(python --version) (${version})" 
+if ! pip show ipykernel >/dev/null 2>&1; then
+    echo "ipykernel not installed. Install it? y/n"
+    read response
+    if [ $response -eq y ]; then
+        echocmd pip install ipykernel
+    else
+        echo ok never mind
+        exit 1
+    fi
+fi
+
+python -m ipykernel install --user --name "$version" --display-name="$(python --version) (${version})"
