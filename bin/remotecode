@@ -13,10 +13,10 @@ if [ -z "$HOSTNAME" ]; then
 fi
 
 showhelp() {
-    echo "USAGE: remotecode [--help] PATH"
+    echo "USAGE: remotecode [--help] [--show] PATH"
 }
 
-if [ $# != 1 ]; then
+if [ $# == 0 ]; then
     showhelp
     exit 1
 fi
@@ -26,8 +26,21 @@ if [ "$1" == "--help" ]; then
     exit 0
 fi
 
+# process arguments
+if [ "$1" == "--show" ]; then
+    norun=1
+    shift
+else
+    norun=0
+fi
+
+path="$1"
+shift
+vscodeargs="$@"
+
+
 # get path
-target_path=$(realpath $1)
+target_path=$(realpath $path)
 resultcode=$?
 if [ $resultcode != 0 ]; then
     exit $resultcode
@@ -49,6 +62,10 @@ else
 fi
 
 # assemble ssh command and run it
-cmd="ssh ${ssh_host} $HOST_VSCODE_CMD $flag vscode-remote://ssh-remote%2B${client_name}/${target_path}"
+cmd="ssh ${ssh_host} $HOST_VSCODE_CMD $vscodeargs $flag vscode-remote://ssh-remote%2B${client_name}/${target_path}"
 echo "> $cmd"
-$cmd
+if [ "$norun" != 1 ]; then
+    $cmd
+else
+    echo "Did not execute command (--show passed)"
+fi
