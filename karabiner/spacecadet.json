@@ -295,7 +295,7 @@
             ]
         },
         {
-            "description": "print_screen strike -> parentheses, hold -> left control",
+            "description": "print_screen strike -> ), hold -> right control",
             "manipulators": [
                 {
                     "type": "basic",
@@ -312,7 +312,7 @@
                     },
                     "to_if_alone": [
                         {
-                            "key_code": "9",
+                            "key_code": "0",
                             "modifiers": [
                                 "left_shift"
                             ]
