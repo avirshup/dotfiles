@@ -1,11 +1,11 @@
-<scheme name="AMV_old" version="142" parent_scheme="Darcula">
+<scheme name="AMV default" version="142" parent_scheme="Darcula">
   <option name="FONT_SCALE" value="1.0" />
   <metaInfo>
-    <property name="created">2021-05-05T20:17:15</property>
+    <property name="created">2022-07-07T14:03:05</property>
     <property name="ide">Python</property>
-    <property name="ideVersion">2021.1.1.0.0</property>
-    <property name="modified">2021-11-12T15:43:49</property>
-    <property name="originalScheme">mytheme_backup</property>
+    <property name="ideVersion">2022.1.3.0.0</property>
+    <property name="modified">2022-07-07T14:03:31</property>
+    <property name="originalScheme">AMV default</property>
   </metaInfo>
   <option name="CONSOLE_FONT_NAME" value="Menlo" />
   <option name="CONSOLE_FONT_SIZE" value="15" />
@@ -602,24 +602,26 @@
     </option>
     <option name="DEFAULT_BLOCK_COMMENT">
       <value>
-        <option name="FOREGROUND" value="424c55" />
+        <option name="FOREGROUND" value="648495" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="DEFAULT_BRACES">
       <value>
-        <option name="FOREGROUND" value="dee6f2" />
+        <option name="FOREGROUND" value="a9b6c4" />
       </value>
     </option>
     <option name="DEFAULT_BRACKETS">
       <value>
-        <option name="FOREGROUND" value="dee6f2" />
+        <option name="FOREGROUND" value="a9b6c4" />
       </value>
     </option>
     <option name="DEFAULT_CLASS_NAME">
       <value>
-        <option name="FOREGROUND" value="f86f50" />
+        <option name="FOREGROUND" value="4696ff" />
         <option name="BACKGROUND" value="111214" />
+        <option name="FONT_TYPE" value="1" />
+        <option name="EFFECT_COLOR" value="5d6d76" />
       </value>
     </option>
     <option name="DEFAULT_CLASS_REFERENCE">
@@ -634,12 +636,12 @@
     </option>
     <option name="DEFAULT_CONSTANT">
       <value>
-        <option name="FOREGROUND" value="ffbe40" />
+        <option name="FOREGROUND" value="80899e" />
       </value>
     </option>
     <option name="DEFAULT_DOC_COMMENT">
       <value>
-        <option name="FOREGROUND" value="424c55" />
+        <option name="FOREGROUND" value="677785" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -672,15 +674,17 @@
     </option>
     <option name="DEFAULT_FUNCTION_CALL">
       <value>
-        <option name="FOREGROUND" value="b15959" />
+        <option name="FOREGROUND" value="c7d0d9" />
+        <option name="BACKGROUND" value="261818" />
+        <option name="EFFECT_COLOR" value="343232" />
       </value>
     </option>
     <option name="DEFAULT_FUNCTION_DECLARATION">
       <value>
-        <option name="FOREGROUND" value="52b8bc" />
+        <option name="FOREGROUND" value="ce898c" />
         <option name="BACKGROUND" value="111214" />
         <option name="FONT_TYPE" value="1" />
-        <option name="EFFECT_COLOR" value="32424a" />
+        <option name="EFFECT_COLOR" value="537584" />
       </value>
     </option>
     <option name="DEFAULT_IDENTIFIER">
@@ -695,12 +699,15 @@
     </option>
     <option name="DEFAULT_INSTANCE_METHOD">
       <value>
-        <option name="FOREGROUND" value="ef746f" />
+        <option name="FOREGROUND" value="51b2b6" />
+        <option name="BACKGROUND" value="131416" />
+        <option name="FONT_TYPE" value="1" />
+        <option name="EFFECT_COLOR" value="3c3f41" />
       </value>
     </option>
     <option name="DEFAULT_INTERFACE_NAME">
       <value>
-        <option name="FOREGROUND" value="c78feb" />
+        <option name="BACKGROUND" value="0" />
       </value>
     </option>
     <option name="DEFAULT_INVALID_STRING_ESCAPE">
@@ -711,13 +718,14 @@
     </option>
     <option name="DEFAULT_KEYWORD">
       <value>
-        <option name="FOREGROUND" value="e28892" />
+        <option name="FOREGROUND" value="84c7c9" />
+        <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
     <option name="DEFAULT_LINE_COMMENT">
       <value>
-        <option name="FOREGROUND" value="6a7a8b" />
-        <option name="FONT_TYPE" value="2" />
+        <option name="FOREGROUND" value="7e828e" />
+        <option name="FONT_TYPE" value="3" />
       </value>
     </option>
     <option name="DEFAULT_LOCAL_VARIABLE">
@@ -727,17 +735,18 @@
     </option>
     <option name="DEFAULT_METADATA">
       <value>
-        <option name="FOREGROUND" value="b3cc57" />
+        <option name="FOREGROUND" value="72f1b8" />
       </value>
     </option>
     <option name="DEFAULT_NUMBER">
       <value>
-        <option name="FOREGROUND" value="ffbe40" />
+        <option name="FOREGROUND" value="e4a3ff" />
       </value>
     </option>
     <option name="DEFAULT_OPERATION_SIGN">
       <value>
-        <option name="FOREGROUND" value="dee6f2" />
+        <option name="FOREGROUND" value="e8bb89" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="DEFAULT_PARAMETER">
@@ -747,13 +756,19 @@
     </option>
     <option name="DEFAULT_PARENTHS">
       <value>
-        <option name="FOREGROUND" value="dee6f2" />
+        <option name="FOREGROUND" value="7e828e" />
       </value>
     </option>
     <option name="DEFAULT_PREDEFINED_SYMBOL">
       <value>
-        <option name="FOREGROUND" value="a9c4ac" />
+        <option name="FOREGROUND" value="a2c1ef" />
         <option name="EFFECT_TYPE" value="3" />
+      </value>
+    </option>
+    <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
+      <value>
+        <option name="EFFECT_COLOR" value="d4aaad" />
+        <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
     <option name="DEFAULT_SEMICOLON">
@@ -775,7 +790,7 @@
     </option>
     <option name="DEFAULT_STRING">
       <value>
-        <option name="FOREGROUND" value="714a8f" />
+        <option name="FOREGROUND" value="c78feb" />
       </value>
     </option>
     <option name="DEFAULT_TAG">
@@ -1280,6 +1295,9 @@
       <value>
         <option name="BACKGROUND" value="2f2022" />
       </value>
+    </option>
+    <option name="INDENT_RAINBOW_ERROR_DERIVED">
+      <value />
     </option>
     <option name="INFO_ATTRIBUTES">
       <value>
@@ -68671,44 +68689,18 @@
         <option name="FOREGROUND" value="219598" />
       </value>
     </option>
-    <option name="PY.BRACES">
+    <option name="PY.ASYNC">
       <value>
-        <option name="FOREGROUND" value="a9b6c4" />
-      </value>
-    </option>
-    <option name="PY.BRACKETS">
-      <value>
-        <option name="FOREGROUND" value="a9b6c4" />
-      </value>
-    </option>
-    <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL" />
-    <option name="PY.CLASS_DEFINITION">
-      <value>
-        <option name="FOREGROUND" value="44b661" />
-        <option name="BACKGROUND" value="111214" />
-        <option name="FONT_TYPE" value="1" />
-        <option name="EFFECT_COLOR" value="32424a" />
-      </value>
-    </option>
-    <option name="PY.DECORATOR">
-      <value>
-        <option name="FOREGROUND" value="e28892" />
-      </value>
-    </option>
-    <option name="PY.DOC_COMMENT">
-      <value>
-        <option name="FOREGROUND" value="677785" />
-        <option name="FONT_TYPE" value="2" />
-      </value>
-    </option>
-    <option name="PY.DOC_COMMENT_TAG">
-      <value>
-        <option name="FOREGROUND" value="637280" />
+        <option name="FOREGROUND" value="bfc7d2" />
+        <option name="BACKGROUND" value="62458f" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
-    <option name="PY.FUNCTION_CALL">
-      <value />
+    <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL" />
+    <option name="PY.DECORATOR">
+      <value>
+        <option name="FOREGROUND" value="c0cd94" />
+      </value>
     </option>
     <option name="PY.INVALID_STRING_ESCAPE">
       <value>
@@ -68721,17 +68713,6 @@
         <option name="FONT_TYPE" value="1" />
       </value>
     </option>
-    <option name="PY.LINE_COMMENT">
-      <value>
-        <option name="FOREGROUND" value="5b6975" />
-        <option name="FONT_TYPE" value="2" />
-      </value>
-    </option>
-    <option name="PY.NUMBER">
-      <value>
-        <option name="FOREGROUND" value="e4a3ff" />
-      </value>
-    </option>
     <option name="PY.PREDEFINED_DEFINITION" baseAttributes="DEFAULT_PREDEFINED_SYMBOL" />
     <option name="PY.PREDEFINED_USAGE">
       <value>
@@ -68742,11 +68723,6 @@
       <value>
         <option name="FOREGROUND" value="ac9d8c" />
         <option name="FONT_TYPE" value="1" />
-      </value>
-    </option>
-    <option name="PY.STRING">
-      <value>
-        <option name="FOREGROUND" value="c78feb" />
       </value>
     </option>
     <option name="PY.STRING.B">
@@ -69727,6 +69703,89 @@
       <value>
         <option name="FOREGROUND" value="a9b6c4" />
         <option name="EFFECT_TYPE" value="5" />
+      </value>
+    </option>
+    <option name="async_KEYWORD">
+      <value>
+        <option name="FOREGROUND" value="ffffff" />
+        <option name="FONT_TYPE" value="3" />
+        <option name="EFFECT_COLOR" value="3c3f41" />
+        <option name="ERROR_STRIPE_COLOR" value="3c3f41" />
+        <option name="EFFECT_TYPE" value="5" />
+      </value>
+    </option>
+    <option name="org.rust.ASSOC_FUNCTION">
+      <value>
+        <option name="FOREGROUND" value="51b2b6" />
+        <option name="BACKGROUND" value="131416" />
+        <option name="FONT_TYPE" value="1" />
+        <option name="EFFECT_COLOR" value="3c3f41" />
+      </value>
+    </option>
+    <option name="org.rust.ASSOC_FUNCTION_CALL">
+      <value>
+        <option name="EFFECT_COLOR" value="888f96" />
+        <option name="EFFECT_TYPE" value="1" />
+      </value>
+    </option>
+    <option name="org.rust.ENUM">
+      <value>
+        <option name="FOREGROUND" value="9aabbc" />
+        <option name="BACKGROUND" value="80808" />
+        <option name="FONT_TYPE" value="1" />
+      </value>
+    </option>
+    <option name="org.rust.ENUM_VARIANT">
+      <value>
+        <option name="FONT_TYPE" value="3" />
+        <option name="EFFECT_TYPE" value="1" />
+      </value>
+    </option>
+    <option name="org.rust.FUNCTION_CALL">
+      <value />
+    </option>
+    <option name="org.rust.LIFETIME">
+      <value>
+        <option name="FOREGROUND" value="c7d0d9" />
+      </value>
+    </option>
+    <option name="org.rust.MACRO">
+      <value>
+        <option name="FOREGROUND" value="202225" />
+        <option name="BACKGROUND" value="51a7ab" />
+        <option name="FONT_TYPE" value="1" />
+      </value>
+    </option>
+    <option name="org.rust.METHOD_CALL">
+      <value />
+    </option>
+    <option name="org.rust.MUT_BINDING">
+      <value>
+        <option name="BACKGROUND" value="2e2f32" />
+      </value>
+    </option>
+    <option name="org.rust.MUT_PARAMETER">
+      <value>
+        <option name="BACKGROUND" value="2f2c2c" />
+        <option name="EFFECT_TYPE" value="1" />
+      </value>
+    </option>
+    <option name="org.rust.PRIMITIVE_TYPE">
+      <value>
+        <option name="FOREGROUND" value="5eabff" />
+      </value>
+    </option>
+    <option name="org.rust.STRUCT">
+      <value>
+        <option name="FOREGROUND" value="9fb1c3" />
+        <option name="BACKGROUND" value="50505" />
+        <option name="FONT_TYPE" value="1" />
+        <option name="EFFECT_TYPE" value="1" />
+      </value>
+    </option>
+    <option name="org.rust.TYPE_PARAMETER">
+      <value>
+        <option name="FOREGROUND" value="5eabff" />
       </value>
     </option>
     <option name="osmorc.headerName">

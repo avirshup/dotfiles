@@ -1,0 +1,151 @@
+<keymap version="1" name="AMV Keymap" parent="Mac OS X 10.5+">
+  <action id="AceAction">
+    <keyboard-shortcut first-keystroke="ctrl semicolon" />
+    <keyboard-shortcut first-keystroke="meta j" />
+  </action>
+  <action id="AceDeclarationAction">
+    <keyboard-shortcut first-keystroke="alt o" />
+  </action>
+  <action id="AceLineAction" />
+  <action id="AceLineIndentsAction">
+    <keyboard-shortcut first-keystroke="shift meta l" />
+  </action>
+  <action id="AceTargetAction">
+    <keyboard-shortcut first-keystroke="ctrl alt semicolon" />
+    <keyboard-shortcut first-keystroke="shift meta j" />
+  </action>
+  <action id="Back">
+    <keyboard-shortcut first-keystroke="meta open_bracket" />
+    <mouse-shortcut keystroke="button4" />
+  </action>
+  <action id="CloseAllEditorsButActive">
+    <keyboard-shortcut first-keystroke="shift meta w" />
+    <keyboard-shortcut first-keystroke="meta alt w" />
+  </action>
+  <action id="CollapseAllRegions">
+    <keyboard-shortcut first-keystroke="shift meta 1" />
+  </action>
+  <action id="CommentByBlockComment">
+    <keyboard-shortcut first-keystroke="meta alt slash" />
+    <keyboard-shortcut first-keystroke="shift meta slash" />
+  </action>
+  <action id="Console.Open" />
+  <action id="Console.TableResult.SetDefault" />
+  <action id="Debugger.EditTypeSource" />
+  <action id="Diff.FocusOppositePane" />
+  <action id="Diff.FocusOppositePaneAndScroll" />
+  <action id="EditBreakpoint" />
+  <action id="EditSourceInNewWindow" />
+  <action id="EditorBackwardParagraph">
+    <keyboard-shortcut first-keystroke="ctrl alt left" />
+  </action>
+  <action id="EditorBackwardParagraphWithSelection">
+    <keyboard-shortcut first-keystroke="shift ctrl alt left" />
+  </action>
+  <action id="EditorCutLineBackward">
+    <keyboard-shortcut first-keystroke="ctrl u" />
+  </action>
+  <action id="EditorDeleteToWordStartInDifferentHumpsMode">
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
+  <action id="EditorForwardParagraph">
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+  </action>
+  <action id="EditorForwardParagraphWithSelection">
+    <keyboard-shortcut first-keystroke="shift ctrl alt right" />
+  </action>
+  <action id="EditorScrollDown">
+    <keyboard-shortcut first-keystroke="alt page_down" />
+  </action>
+  <action id="EditorScrollToCenter">
+    <keyboard-shortcut first-keystroke="ctrl l" />
+  </action>
+  <action id="EditorScrollUp">
+    <keyboard-shortcut first-keystroke="alt page_up" />
+  </action>
+  <action id="EmmetNextEditPoint" />
+  <action id="EmmetPreviousEditPoint" />
+  <action id="ExpandAllToLevel1">
+    <keyboard-shortcut first-keystroke="shift meta 2" />
+  </action>
+  <action id="ExpandAllToLevel2" />
+  <action id="ExpandAllToLevel3" />
+  <action id="ExpandAllToLevel4" />
+  <action id="ExpandAllToLevel5" />
+  <action id="FileStructurePopup">
+    <keyboard-shortcut first-keystroke="ctrl f12" />
+  </action>
+  <action id="FillParagraph">
+    <keyboard-shortcut first-keystroke="alt q" />
+  </action>
+  <action id="FindUsagesInFile" />
+  <action id="Forward">
+    <keyboard-shortcut first-keystroke="meta close_bracket" />
+    <mouse-shortcut keystroke="button5" />
+  </action>
+  <action id="GotoDeclaration">
+    <keyboard-shortcut first-keystroke="meta b" />
+    <mouse-shortcut keystroke="Force touch" />
+  </action>
+  <action id="GotoTypeDeclaration" />
+  <action id="HighlightUsagesInFile" />
+  <action id="InsertLiveTemplate" />
+  <action id="IntroduceVariable">
+    <keyboard-shortcut first-keystroke="ctrl alt v" />
+  </action>
+  <action id="List-scrollDown" />
+  <action id="List-scrollUp" />
+  <action id="Macro.add import and isort">
+    <keyboard-shortcut first-keystroke="meta alt i" />
+  </action>
+  <action id="MoveEditorToOppositeTabGroup">
+    <keyboard-shortcut first-keystroke="alt minus" />
+  </action>
+  <action id="NextSplitter">
+    <keyboard-shortcut first-keystroke="ctrl quote" />
+  </action>
+  <action id="NextTab">
+    <keyboard-shortcut first-keystroke="meta alt right" />
+  </action>
+  <action id="NotebookSelectCellAboveAction" />
+  <action id="NotebookSelectCellBelowAction" />
+  <action id="OpenEditorInOppositeTabGroup">
+    <keyboard-shortcut first-keystroke="alt equals" />
+  </action>
+  <action id="PartialPageNav.PageDown" />
+  <action id="PartialPageNav.PageUp" />
+  <action id="PrevSplitter" />
+  <action id="PreviousTab">
+    <keyboard-shortcut first-keystroke="meta alt left" />
+  </action>
+  <action id="RunDashboard.EditConfiguration" />
+  <action id="Rust.Build" />
+  <action id="SearchEverywhere.NavigateToNextGroup">
+    <keyboard-shortcut first-keystroke="meta down" />
+  </action>
+  <action id="SearchEverywhere.NavigateToPrevGroup">
+    <keyboard-shortcut first-keystroke="meta up" />
+  </action>
+  <action id="Switcher">
+    <keyboard-shortcut first-keystroke="alt tab" />
+  </action>
+  <action id="Table-scrollDownChangeSelection" />
+  <action id="ToggleBookmark" />
+  <action id="ToggleLineBreakpoint" />
+  <action id="Tool_External Tools_isort">
+    <keyboard-shortcut first-keystroke="ctrl meta i" />
+  </action>
+  <action id="Tree-scrollDownChangeSelection" />
+  <action id="UpdateRunningApplication" />
+  <action id="VcsShowNextChangeMarker">
+    <keyboard-shortcut first-keystroke="f3" />
+  </action>
+  <action id="VcsShowPrevChangeMarker">
+    <keyboard-shortcut first-keystroke="shift f3" />
+  </action>
+  <action id="ViewBreakpoints" />
+  <action id="XDebugger.JumpToTypeSource" />
+  <action id="opennInNewSplittedTab">
+    <keyboard-shortcut first-keystroke="shift meta b" />
+  </action>
+</keymap>
