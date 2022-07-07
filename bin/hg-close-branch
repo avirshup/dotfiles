@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# see https://stackoverflow.com/a/21894682/1958900
+# and https://stackoverflow.com/a/12030951/1958900
+if [[ ! $(hg status -mard 2>/dev/null) ]]; then
+    echo "Uncommited changes - please commit before running this command"
+fi
+
+if [ -z "$1" ]; then
+    branch=$(hg branch)
+else
+    branch=$1
+fi
+
+echocmd hg up "${branch}"

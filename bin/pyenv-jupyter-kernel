@@ -15,7 +15,7 @@ fi
 if ! pip show ipykernel >/dev/null 2>&1; then
     echo "ipykernel not installed. Install it? y/n"
     read response
-    if [ $response -eq y ]; then
+    if [ "$response" == "y" ]; then
         echocmd pip install ipykernel
     else
         echo ok never mind
