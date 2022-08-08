@@ -1,16 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ -z "$1" ]; then
     echo "Usage: pydebug [python script] [arguments...]"
     exit 1
 fi
 
+# -------------------------------------- #
+# Get the path to the executable or script
+
 if [ -x "$1" ]; then
+    # is the command the path to a script?
     exe=$1
 else
+    # is pyenv installed and if so is it a pyenv shim?
     exe=$(pyenv which $1 2>/dev/null)
+
+    # if not pyenv, is it a script in your path?
     if [ $? != 0 ]; then
       exe=$(which $1)
+
+      # give up
       if [ $? != 0 ]; then
         echo "Script $1 not found."
         exit 1
@@ -18,4 +27,11 @@ else
     fi
 fi
 
-echocmd python -m pdb -c continue ${exe} ${@:2}
+# were you running something with `python -m (module path) [args]`?
+exename=$(basename "$exe")
+if [ "$2" == "-m" ] && [[ $exename =~ python* ]] ; then
+  exe=""
+fi
+
+set +x
+python -m pdb -c continue ${exe} ${@:2}
