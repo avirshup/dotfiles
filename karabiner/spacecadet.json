@@ -415,6 +415,91 @@
                     ]
                 }
             ]
+        },
+        {
+            "description": "left/right shift strike -> (/) (macbook only)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 120
+                    },
+                    "from": {
+                        "key_code": "left_shift",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "9",
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "left_shift",
+                            "modifiers": []
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 1452,
+                                    "product_id": 610,
+                                    "description": "mb pro kb"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "parameters": {
+                        "basic.to_if_alone_timeout_milliseconds": 120
+                    },
+                    "from": {
+                        "key_code": "right_shift",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to_if_alone": [
+                        {
+                            "key_code": "0",
+                            "modifiers": [
+                                "right_shift"
+                            ]
+                        }
+                    ],
+                    "to": [
+                        {
+                            "key_code": "right_shift",
+                            "modifiers": []
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "device_if",
+                            "identifiers": [
+                                {
+                                    "vendor_id": 1452,
+                                    "product_id": 610,
+                                    "description": "mb pro kb"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
