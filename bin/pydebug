@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+function echocmd() {
+    echo "> $@"
+    $@
+}
+
+
 if [ -z "$1" ]; then
     echo "Usage: pydebug [python script] [arguments...]"
     exit 1

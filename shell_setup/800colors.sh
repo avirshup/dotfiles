@@ -11,14 +11,13 @@ else
     alias ssh='withtheme ssh'
     alias mosh='withtheme mosh'
     alias grep='grep --color=auto'
+
 fi
 export CLICOLOR=1
 
 alias du='du -h'
 alias units='units -v'
-alias grep='grep --color=auto'
 alias tree='tree -C'
 
 alias ccat='pygmentize -f terminal'
-# export LSCOLORS="ExFxBxDxCxEgEdxbxgxcEd"
 

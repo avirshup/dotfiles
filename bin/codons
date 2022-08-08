@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+# Given a DNA string, print it nicely in sets of 3 characters
+import sys
+import shutil
+
+term_size = shutil.get_terminal_size(fallback=(80, 20))
+
+width = term_size.columns
+
+seq = sys.argv[1]
+
+NUM_WIDTH = 3
+
+codon_width = 5 + NUM_WIDTH
+codons_per_line = max(width // codon_width, 1)
+
+
+buffer = []
+for codon_num, codon_start in enumerate(range(0, len(seq), 3)):
+    buffer.append(f"{codon_num:>{NUM_WIDTH}} {seq[codon_start:codon_start + 3]}")
+    if len(buffer) >= codons_per_line:
+        print(" ".join(buffer))
+        buffer = []
+
+if buffer:
+    print(" ".join(buffer))

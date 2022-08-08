@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Try to install requirements.txt using conda-forge, otherwise fall back to pip
+
+reqfile="$1"
+
+while read reqline; do
+    req="$(echo $reqline | cut -d '#' -f1)"
+    if [ -n "$req" ]; then
+        conda install -c conda-forge --yes "${req}"
+    fi
+done < "$reqfile"
+
+pip install -r "$reqfile"

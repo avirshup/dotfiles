@@ -1,0 +1,4 @@
+.fstr : Make string into f-string
+    str -> f$expr$$END$
+
+
