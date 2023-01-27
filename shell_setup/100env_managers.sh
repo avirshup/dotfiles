@@ -27,9 +27,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if [ -f ${PYENV_ROOT}/bin/pyenv ]; then
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
     prepend-pathvar PATH ${PYENV_ROOT}/bin
-    eval "$(pyenv init --path)"
-    eval "$(pyenv virtualenv-init -)"
-    eval "$(pyenv init -)"
+    eval "$(pyenv init - --no-rehash)"
+    # eval "$(pyenv virtualenv-init -)"
 else
     echo "pyenv not installed"
 fi

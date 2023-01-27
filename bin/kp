@@ -3,4 +3,4 @@
 
 TIMEOUT=15
 
-kpcli --kdb=${HOME}/.kp.kdbx --readonly --command "xpx /Root/$1"
+keepassxc-cli clip "${HOME}/.kp.kdbx" "$@"
