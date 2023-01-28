@@ -17,7 +17,9 @@ fi
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+if [[ "$TERM_PROGRAM" != "WarpTerminal" ]]; then
+  ZSH_THEME="powerlevel10k/powerlevel10k"
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -77,14 +79,20 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  emoji-clock
-  zsh-nvm
+  # emoji-clock # doesn't seem to work (at least not with p10k)
+  # zsh-nvm
   colored-man-pages
-  zsh-autosuggestions
-  rust
-  rsync
+  # zsh-autosuggestions
+  # pip
+  # rust
+  # rsync
+  # pyenv  # NO! it's slow and does nothing
+  # docker  # autocompletion
   z
 )
+
+# List of plugins: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
+#  or go to https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/<plugin name>
 
 export NVM_LAZY_LOAD=true
 

@@ -1,3 +1,6 @@
 adsk.sh
 *~
 bin/beast
+.vscode
+fish-config/fish_variables
+.DS_Store

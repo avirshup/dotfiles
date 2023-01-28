@@ -6,6 +6,11 @@ fi
 # Clean version: https://github.com/romkatv/powerlevel10k/blob/master/config/p10k-rainbow.zsh
 #   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 
+if [[ "$TERM_PROGRAM" == "WarpTerminal" ]]; then
+  echo "Skip p10k - warp terminal detected"
+  return 0
+fi
+
 # Temporarily change options.
 'builtin' 'local' '-a' 'p10k_config_opts'
 [[ ! -o 'aliases'         ]] || p10k_config_opts+=('aliases')
@@ -27,12 +32,12 @@ fi
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     machine_id              # os identifier
-    goenv                   # go environment (https://github.com/syndbg/goenv)
+    # goenv                   # go environment (https://github.com/syndbg/goenv)
     # nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
     # nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
     dir                     # current directory
     pyenv                   # python environment (https://github.com/pyenv/pyenv)
-    vcs                     # git status
+    # vcs                     # git status
     jobjobs         # presence of background jobs
     # spacer
 
@@ -53,18 +58,18 @@ fi
     status                  # exit code of the last command
 
     command_execution_time  # duration of the last command
-    direnv                  # direnv status (https://direnv.net/)
-    asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
+    # direnv                  # direnv status (https://direnv.net/)
+    # asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
     # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
     # anaconda                # conda environment (https://conda.io/)
     # node_version          # node.js version
     # rust_version          # rustc version (https://www.rust-lang.org)
-    package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
-    rvm                     # ruby version from rvm (https://rvm.io)
-    fvm                     # flutter version management (https://github.com/leoafarias/fvm)
-    terraform               # terraform workspace (https://www.terraform.io)
-    aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
-    azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
+    # package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
+    # rvm                     # ruby version from rvm (https://rvm.io)
+    # fvm                     # flutter version management (https://github.com/leoafarias/fvm)
+    # terraform               # terraform workspace (https://www.terraform.io)
+    # aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+    # azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
     # load                  # CPU load
     # disk_usage            # disk usage
     # ram                   # free RAM

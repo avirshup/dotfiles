@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Based on https://www.shadabahmed.com/blog/2013/08/11/split-tunneling-vpn-routing-table
+#
+# Modifies system routing tables so that it only uses the VPN network adapter
+# for certain subnets, and sends everything else to the regular network interface. The following environment vars must be set:
+# $SPLIT_DEFAULT_INTERFACE: internet interface (`en0` or `en1`, usually) to use for everything except the specified subnets
+# $SPLIT_VPN_INTERFACE: the VPN's network adapter
+# $SPLIT_VPN_SUBNETS: one or more space-separated subnet addresses that you want to send over the VPN
+
+set -e
+
+if ([ -z "${SPLIT_DEFAULT_INTERFACE}" ] ||
+    [ -z "${SPLIT_VPN_INTERFACE}" ] ||
+    [ -z "${SPLIT_VPN_SUBNETS}" ]); then
+    echo "Must set all env vars: "
+    echo "  SPLIT_DEFAULT_INTERFACE, SPLIT_VPN_INTERFACE, SPLIT_VPN_SUBNETS"
+    exit 1
+fi
+
+perform-split() {
+    if ((EUID != 0)); then
+        echo 'Please, run this command with `sudo -E`' 1>&2
+        exit 1
+    fi
+
+    GATEWAY=$(netstat -nrf inet | grep default | grep "$SPLIT_DEFAULT_INTERFACE" | awk '{print $2}')
+
+    echo "Resetting routes with gateway => $GATEWAY"
+    echo
+
+    set -x
+    route -n delete default -ifscope "$SPLIT_DEFAULT_INTERFACE"
+    route -n delete -net default -interface "$SPLIT_VPN_INTERFACE"
+    route -n add -net default $GATEWAY
+    for subnet in $SPLIT_VPN_SUBNETS; do
+        route -n add -net "$subnet" -interface "$SPLIT_VPN_INTERFACE"
+    done
+
+    echo "Done!"
+}
+
+# A little hack to invoke the function with sudo, since I always forget
+# https://unix.stackexchange.com/a/269080/257597
+DECLARE_FUNC=$(declare -f perform-split)
+sudo -E bash -c "$DECLARE_FUNC; perform-split"
