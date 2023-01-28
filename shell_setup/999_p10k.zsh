@@ -1,3 +1,8 @@
+if [ -n "$AMV_SHELL_SAFEMODE" ]; then
+  echo "Safe mode - no p10k"
+  return 0
+fi
+
 # Clean version: https://github.com/romkatv/powerlevel10k/blob/master/config/p10k-rainbow.zsh
 #   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 

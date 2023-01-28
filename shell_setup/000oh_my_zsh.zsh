@@ -1,3 +1,8 @@
+if [ -n "$AMV_SHELL_SAFEMODE" ]; then
+  echo "Safe mode - no omzsh"
+  return 0
+fi
+
 export ZSH="$HOME/.oh-my-zsh"
 
 if [ ! -d "${ZSH}" ]; then

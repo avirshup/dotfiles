@@ -28,13 +28,20 @@ if [[ "$(uname)" = "Darwin" ]]; then
 		echo -n "$($@)" | pbcopy
 	}
 
-	ql() {
-		qlmanage -p "$@" &>/dev/null
+	preman () {
+		# Open manpage in preview
+		# from https://github.com/pre/zsh-functions/blob/master/man-preview.zsh
+		man -t "$@" | Open -f -a Preview
 	}
 
-	# https://apple.stackexchange.com/a/5461/64253
-	cman() {
+	codeman() {
+		# Open manpage in vscode
+		# from https://apple.stackexchange.com/a/5461/64253
 		man "${1}" | col -b | code -n -
+	}
+
+	ql() {
+		qlmanage -p "$@" &>/dev/null
 	}
 
 fi
