@@ -8,13 +8,16 @@ starship init fish | source
 
 #--- paths ---#
 # note these won't be added if they don't exist
+# or if they're already in the path
 fish_add_path -U \
     ~/.pyenv/bin \
     /opt/homebrew/bin \
     /usr/local/bin \
     ~/.local/bin \
     ~/bin \
-    ~/dotfiles/bin
+    ~/dotfiles/bin \
+    ~/.ghcup/bin \
+    ~/.cabal/bin
 
 # pipx
 set -g PIPX_DEFAULT_PYTHON ~/.pyenv/versions/pipx_interpreter/bin/python
@@ -34,5 +37,5 @@ test -f {$HOME}/.iterm2_shell_integration.fish ; and \
     source {$HOME}/.iterm2_shell_integration.fish
 
 # gnu parallel
-test -f (which env_parallel.fish); and \
-    source (which env_parallel.fish)
+type -q env_parallel.fish; and \
+    source env_parallel.fish
