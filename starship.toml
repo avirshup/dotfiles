@@ -1,37 +1,47 @@
 # docs! https://starship.rs/config
 
-format = """
+format = """\
 [](#9A348E)\
-$os\
-$username\
+[${env_var._STARSHIP_MACHINE_ID} ](bg:#9A348E)\
 [](bg:#DA627D fg:#9A348E)\
-$directory\
+[$directory](bg:#DA627D)\
 [](fg:#DA627D bg:#FCA17D)\
-$git_branch\
-$git_status\
-$hg_branch\
+[\
+    $git_branch\
+    $git_status\
+    $hg_branch\
+](bg:#FCA17D fg:#121212)\
 [](fg:#FCA17D bg:#86BBD8)\
-$java\
-$c\
-$golang\
-$haskell\
-$nodejs\
-$rust\
+[\
+    $c\
+    $golang\
+    $haskell\
+    $nodejs\
+    $rust\
+    $java\
+](bg:#86BBD8 fg:#121212)\
 [](fg:#86BBD8 bg:#06969A)\
-$python\
+[${env_var.pyver}](bg:#06969A)\
 [](fg:#06969A bg:#33658A)\
-$conda\
+[$conda](bg:#33658A)\
 [](fg:#33658A)\
+$shlvl\
 $fill\
 [](fg:#9A348E)\
 $status\
 $cmd_duration
-[ ](fg:#EEEEEE)
+\
+\
+${env_var._STARSHIP_OS_ID} \
+$character\
 """
+
+# $java deactivated
+
 
 
 right_format = """[](fg:#33658A)\
-$time
+[$time](bg:#33658A)\
 """
 
 # right_format = """
@@ -42,7 +52,13 @@ $time
 # """
 
 # Disable the blank line at the start of the prompt
-add_newline = true
+add_newline = false
+
+
+[sudo]
+disabled = true # too slow, adds 20 ms
+format="$symbol"
+symbol=""
 
 # https://starship.rs/config/#status
 [status]
@@ -55,25 +71,31 @@ format='[$symbol$status ]($style)'
 [cmd_duration]
 min_time = 500
 show_milliseconds = true
-show_notifications = true
+show_notifications = false
 style = "bg:#33658A"
-format = "[ $duration]($style)"
+format = "[ 󰞌$duration]($style)"
 
 [fill]
 symbol=' '
 style=""
 disabled=false
 
-
 [conda]
 style = "bg:#33658A"
-format = '[ $symbol$environment ]($style)'
+format = '[$symbol$environment]($style)'
+ignore_base = false
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
-format = '[ $time ]($style)'
+format = '$time'
+
+[shlvl]
+disabled = false
+# style="bg:#33658A"
+symbol=""
+format='[⏬ $shlvl ]($style)'
+
 
 
 # You can also replace your username with a neat symbol like   or disable this
@@ -85,21 +107,79 @@ style_root = "bg:#9A348E"
 format = '[$user ]($style)'
 disabled = true
 
-# An alternative to the username module which displays a symbol that
-# represents the current operating system
+# TOO SLOW (adds 20 ms) for something that,
+# um, shouldn't change much?
+# replaced w/ env_var._STARSHIP_OS_ID
 [os]
-style = "bg:#9A348E"
-disabled = false # Disabled by default
+# style = "bg:#9A348E
+format='$symbol'
+disabled = true 
+
+# from the "nerd font preset"
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = ""
+CentOS = ""
+Debian = ""
+DragonFly = ""
+Emscripten = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Garuda = "﯑"
+Gentoo = ""
+HardenedBSD = "ﲊ"
+Illumos = ""
+Linux = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = ""
+Mint = ""
+NetBSD = ""
+NixOS = ""  
+OpenBSD = ""
+openSUSE = ""
+OracleLinux = ""
+Pop = ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+Redox = ""
+Solus = "ﴱ"
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Windows = ""
+
+
+[character]
+success_symbol = ""
+
+[env_var._STARSHIP_MACHINE_ID]
+default = "🖥️"
+variable="_STARSHIP_MACHINE_ID"
+format="$env_value"
+
+[env_var._STARSHIP_OS_ID]
+default = ""
+variable="_STARSHIP_OS_ID"
+format="$env_value"
+
 
 [directory]
 style = "bg:#DA627D"
-format = "[ $path ]($style)"
+format = "$path"
 truncation_length = 3
 truncation_symbol = "…/"
 
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
+"~" = ""
+"mycode" = ""
 "Documents" = " "
 "Downloads" = " "
 "Music" = " "
@@ -110,10 +190,42 @@ truncation_symbol = "…/"
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important  " = "  "
 
+# see config.fish for where this variable is set
+[env_var.pyver]
+variable="_CURRENT_PYTHON_VERSION"
+default="🐍🚫"
+format="$env_value"
+
+# https://starship.rs/config/#pythonpython
+# disabled - too slow
+[custom.pyversion]
+# style = "bg:#06969A"
+# command = "python --version"
+# command = "import sys; print('🐍' + '.'.join(map(str, sys.version_info[:3])))"
+# shell = ["python", "--version"]
+use_stdin = false
+when = true
+description = "Python - version only"
+format = '$output'
+symbol = "🐍" # ""
+disabled=true
+
+# disabled - won't _stay_ on because of the "detect_files" requirement
+# https://starship.rs/config/#python
+[python]
+# style="bg:#06969A"
+format= "$symbol$version"
+version_format = "${raw}"
+pyenv_version_name = false
+detect_folders= []
+detect_files= [] # _ALWAYS_ show
+detect_extensions = []
+disabled=true
+
 [c]
-symbol = " "
+symbol = "󱔎"
 style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+format = '$symbol ($version)'
 
 [docker_context]
 symbol = " "
@@ -123,31 +235,31 @@ format = '[ $symbol $context ]($style) $path'
 [elixir]
 symbol = " "
 style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+format = '$symbol ($version)'
 
 [elm]
 symbol = " "
 style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+format = '$symbol ($version)'
 
 [git_branch]
 symbol = ""
 style = "bg:#FCA17D fg:#121212"
-format = '[ $symbol $branch ]($style)'
+format = '$symbol$branch'
 
 [git_status]
 style = "bg:#FCA17D fg:#121212"
-format = '[$all_status$ahead_behind ]($style)'
+format = '$all_status$ahead_behind'
 
 [hg_branch]
 style = "bg:#FCA17D fg:#121212"
-format='[ $symbol$branch]($style)'
+format='$topic$symbol$branch'
 disabled = false
 
 [golang]
 symbol = ""
 style = "bg:#86BBD8 fg:#121212"
-format = '[ $symbol ($version) ]($style)'
+format = '$symbol ($version)'
 
 [haskell]
 symbol = ""
@@ -157,37 +269,29 @@ format = '[ $symbol ($version) ]($style)'
 [java]
 symbol = ""
 style = "bg:#86BBD8 fg:#121212"
-format = '[ $symbol ($version) ]($style)'
+format = '$symbol ($version)'
 
 [julia]
 symbol = " "
 style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+format = '[ $symbol ($version) ]()'
 
 [nodejs]
 symbol = ""
 style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+format = '[ $symbol ($version) ]()'
 
 [nim]
 symbol = " "
 style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-# https://starship.rs/config/#python
-[python]
-style="bg:#06969A"
-format= '[$symbol$version]($style)'
-pyenv_version_name = false
-disabled=false
+format = '[ $symbol ($version) ]()'
 
 [rust]
 symbol = ""
 style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+format = '$symbol ($version)'
 
 [scala]
 symbol = " "
 style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
+format = '[ $symbol ($version) ]()'

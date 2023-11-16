@@ -1,6 +1,4 @@
-function ls \
-    --description 'alias ls=ls -hG' \
-    -w "ls"
-    
-    command ls -hG $argv
+function ls --wraps=lsd --description 'alias ls lsd'
+  lsd $argv
+        
 end
