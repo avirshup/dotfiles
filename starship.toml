@@ -163,6 +163,8 @@ default = "🖥️"
 variable="_STARSHIP_MACHINE_ID"
 format="$env_value"
 
+# the actual OS ID field is too slow,
+# so just set a per-machine env var
 [env_var._STARSHIP_OS_ID]
 default = ""
 variable="_STARSHIP_OS_ID"

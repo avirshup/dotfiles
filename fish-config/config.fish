@@ -24,3 +24,6 @@ and pyenv init - --no-rehash | source
 # gnu parallel
 type -q env_parallel.fish
 and source (which env_parallel.fish)
+
+# opam configuration
+source /Users/avirshup/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
