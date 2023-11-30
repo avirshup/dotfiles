@@ -1,0 +1,35 @@
+#!/bin/bash
+set -e
+
+current_registry=$1
+new_registry=$2
+imagename=$3
+
+if [ -z "${new_registry}" ] ; then
+    echo "docker-pp: [P]ull image from one registry, [P]ush it to another."
+    echo
+    echo 'USAGE: docker-pp [current-registry] [new registry] [imagename]'
+    echo
+    echo "EXAMPLE:"
+    echo ">>> docker-pp docker.io/org/ private.registry/ name:version"
+    echo "this command will:"
+    echo "  1) pull the image 'docker.io/org/name:version', then"
+    echo "  2) push it to 'private.registry.internal/name:version'"
+    exit 1
+fi
+
+
+
+target="${new_registry}/${imagename}"
+
+if [ "${current_registry}" != "-" ]; then
+    source="${current_registry}/${imagename}"
+    docker pull "${source}"
+else
+    source="${imagename}"
+fi
+
+docker tag "${source}" "${target}"
+docker push "${target}"
+
+    

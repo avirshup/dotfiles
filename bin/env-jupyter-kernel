@@ -6,9 +6,9 @@ function confirm() {
     echo "$1"
 }
 
-version=$(pyenv version-name)
+version=$CONDA_DEFAULT_ENV
 if [ -z "${version}" ]; then
-    echo pyenv version not found
+    echo no conda env activated?
     exit 1
 fi
 
@@ -16,7 +16,7 @@ if ! pip show ipykernel >/dev/null 2>&1; then
     echo "ipykernel not installed. Install it? y/n"
     read response
     if [ "$response" == "y" ]; then
-        echocmd pip install ipykernel
+        echocmd mamba install ipykernel -n "${version}"
     else
         echo ok never mind
         exit 1

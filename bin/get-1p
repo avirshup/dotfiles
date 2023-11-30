@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+acct=${1:?Account name not provided}
+
+field=${2:-password}
+
+op item get "$acct" --fields "$field" --format json | jq -r .value
