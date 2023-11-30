@@ -55,7 +55,7 @@ format='[$symbol$status ]($style)'
 [cmd_duration]
 min_time = 500
 show_milliseconds = true
-show_notifications = true
+show_notifications = false
 style = "bg:#33658A"
 format = "[ $duration]($style)"
 
