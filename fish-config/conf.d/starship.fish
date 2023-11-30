@@ -21,7 +21,7 @@ if type -q starship
         set STARSHIP_DURATION "$CMD_DURATION$cmd_duration"
         set STARSHIP_JOBS (count (jobs -p))
 
-        /usr/local/bin/starship prompt --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS --pipestatus="$STARSHIP_CMD_PIPESTATUS" --keymap=insert --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
+        starship prompt --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS --pipestatus="$STARSHIP_CMD_PIPESTATUS" --keymap=insert --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
 
     end
     
@@ -31,7 +31,7 @@ if type -q starship
         # Account for changes in variable name between v2.7 and v3.0
         set STARSHIP_DURATION "$CMD_DURATION$cmd_duration"
         set STARSHIP_JOBS (count (jobs -p))
-        /usr/local/bin/starship prompt --right --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS --pipestatus="$STARSHIP_CMD_PIPESTATUS" --keymap=insert --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
+        starship prompt --right --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS --pipestatus="$STARSHIP_CMD_PIPESTATUS" --keymap=insert --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
 
     end
 end
