@@ -1,0 +1,88 @@
+#!/usr/bin/env python
+
+import os
+import argparse
+import sys
+from pathlib import Path
+import re
+
+PATTERN = re.compile(r'^export DIR_(\w+)="(.+)"$')
+
+
+def main():
+    args = argparse.ArgumentParser()
+    opts = args.add_mutually_exclusive_group()
+    opts.add_argument(
+        "--broken",
+        action="store_true",
+        help="print names of broken links only",
+    )
+    broken_only = args.parse_args().broken
+
+    missing, duplicates = check_dirs()
+
+    if broken_only:
+        # for use with shell for loop
+        for name in missing.keys():
+            print(name)
+        return
+
+    if missing:
+        print("Missing dirs:")
+        for name, path in missing.items():
+            print(f"{name}: {path}")
+        print()
+    else:
+        print("No broken links.")
+
+    if duplicates:
+        print("\nDuplicates:")
+        for path, names in duplicates.items():
+            print(f'{path}: {" ".join(names)}')
+    else:
+        print("No duplicates")
+
+
+def check_dirs() -> tuple[dict[str, Path], dict[Path, list[str]]]:
+    missing: dict[str, Path] = {}
+    path_to_names: dict[Path, list[str]] = {}
+
+    # `list_dirs` function includes colors, so read file instead
+    if sdirs := os.environ.get("SDIRS"):
+        sdir_path = Path(sdirs)
+    else:
+        print("$SDIRS not set")
+        sys.exit(1)
+
+    if not sdir_path.is_file():
+        print(f"SDIR file does not exist {sdir_path}")
+        sys.exit(1)
+
+    # collect duplicates and missing dirs
+    sdir_list = sdir_path.read_text()
+    for line in sdir_list.splitlines():
+        match = PATTERN.match(line.strip())
+        if not match:
+            print(f"Warning: couldn't parse {line.strip()}")
+            continue
+        name = match.group(1)
+        path_str = match.group(2)
+        path = Path(os.path.expandvars(path_str)).expanduser()
+
+        if not path.is_dir():
+            missing[name] = path
+
+        if path in path_to_names:
+            path_to_names[path].append(name)
+        else:
+            path_to_names[path] = [name]
+
+    duplicates = {
+        path: names for path, names in path_to_names.items() if len(names) != 1
+    }
+
+    return missing, duplicates
+
+
+if __name__ == "__main__":
+    main()
